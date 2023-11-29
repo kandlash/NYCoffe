@@ -1,0 +1,7 @@
+.drink-panel-container{
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 5px; /* Adjust the gap between cells if needed */
+}
