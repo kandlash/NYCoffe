@@ -27,7 +27,13 @@ const ClientPanel = (props) => {
                 </>
 
             )}
-            <button onClick={handleRemove}>Удалить</button>
+            <div className="chek-box-container"><input type="checkbox"></input></div>
+            <div className="chek-box-container"><input type="checkbox"></input></div>
+            <div className="chek-box-container"><input type="checkbox"></input></div>
+            <div className="chek-box-container"><input type="checkbox"></input></div>
+            <div className="chek-box-container"><input type="checkbox"></input></div>
+            <div className="card-input-container"><input type="number"></input></div>
+            {/* <button onClick={handleRemove}>Удалить</button> */}
         </div>
     );
 };

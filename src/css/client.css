@@ -4,6 +4,12 @@
     margin-bottom: 20px;
 }
 
-.name-container, .arrival-time-container, button, .exit-time-container{
-    width: 100px;
+.name-container, .arrival-time-container, button, .exit-time-container, .chek-box-container, .card-input-container{
+    width: 80px;
+    min-width: 80px;
+    text-align: center;
+}
+
+.card-input-container input{
+    width: 100%;
 }

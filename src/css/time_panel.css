@@ -1,0 +1,16 @@
+.time-panel-labels{
+    display: flex;
+    column-gap: 50px;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.time-panel-label{
+    width: 80px;
+    min-width: 80px;
+    text-align: center;
+}
+
+.time-panel-container{
+
+}
