@@ -9,6 +9,7 @@ const TimePanel = () => {
 
   useEffect(() => {
     localStorage.setItem("clients", JSON.stringify(clients));
+    // localStorage.clear();
   }, [clients]);
 
   const handleAddClient = (clientName) => {
