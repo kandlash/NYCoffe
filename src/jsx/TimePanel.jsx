@@ -1,12 +1,15 @@
-// Ваш обновленный TimePanel.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ClientPanel from "./ClientPanel";
 import AddNewClientPanel from "./AddNewClientPanel";
-import "../css/time_panel.css"
+import "../css/time_panel.css";
 
 const TimePanel = () => {
-  const [clients, setClients] = useState([
-  ]);
+  const initialClients = JSON.parse(localStorage.getItem("clients")) || [];
+  const [clients, setClients] = useState(initialClients);
+
+  useEffect(() => {
+    localStorage.setItem("clients", JSON.stringify(clients));
+  }, [clients]);
 
   const handleAddClient = (clientName) => {
     const currentTime = new Date().toLocaleTimeString();
@@ -20,16 +23,17 @@ const TimePanel = () => {
   };
 
   const handleClientExit = (index) => {
-    const updatedClients = [...clients];
-    updatedClients[index].exit_time = new Date().toLocaleTimeString();
-    updatedClients[index].isExit = true;
-    setClients(updatedClients);
+    setClients((prevClients) =>
+      prevClients.map((client, i) =>
+        i === index
+          ? { ...client, exit_time: new Date().toLocaleTimeString(), isExit: true }
+          : client
+      )
+    );
   };
 
   const handleClientRemove = (index) => {
-    const updatedClients = [...clients];
-    updatedClients.splice(index, 1);
-    setClients(updatedClients);
+    setClients((prevClients) => prevClients.filter((_, i) => i !== index));
   };
 
   return (
@@ -61,7 +65,6 @@ const TimePanel = () => {
         <AddNewClientPanel onAddClient={handleAddClient} />
       </div>
     </div>
-
   );
 };
 
