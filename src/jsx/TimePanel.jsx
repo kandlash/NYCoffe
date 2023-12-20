@@ -6,10 +6,12 @@ import "../css/time_panel.css";
 const TimePanel = () => {
   const initialClients = JSON.parse(localStorage.getItem("clients")) || [];
   const [clients, setClients] = useState(initialClients);
+  const [searchQuery, setSearchQuery] = useState(""); // Новое состояние для хранения значения поиска
 
   useEffect(() => {
     localStorage.setItem("clients", JSON.stringify(clients));
-     localStorage.clear();
+    // Удалите следующую строку, чтобы не очищать localStorage при каждом обновлении clients
+    // localStorage.clear();
   }, [clients]);
 
   const handleAddClient = (clientName) => {
@@ -37,6 +39,11 @@ const TimePanel = () => {
     setClients((prevClients) => prevClients.filter((_, i) => i !== index));
   };
 
+  // Функция для фильтрации клиентов по имени
+  const filteredClients = clients.filter((client) =>
+    client.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="time-panel-wrapper">
       <div className="time-panel-labels">
@@ -50,9 +57,17 @@ const TimePanel = () => {
         <div className="time-panel-label" id="card-hide">Именинник</div>
         <div className="time-panel-label" id="card-show">Номер карты</div>
         <div className="time-panel-label">Цена</div>
+        <div className="search-clients">
+          <input
+            type="search"
+            placeholder="Найти клиента"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
       </div>
       <div className="time-panel-container">
-        {clients.map((client, index) => (
+        {filteredClients.map((client, index) => (
           <ClientPanel
             key={index}
             name={client.name}
@@ -63,7 +78,6 @@ const TimePanel = () => {
             onRemove={() => handleClientRemove(index)}
           />
         ))}
-        
       </div>
       <AddNewClientPanel onAddClient={handleAddClient} />
     </div>

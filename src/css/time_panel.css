@@ -11,7 +11,7 @@
 
 }
 
-.time-panel-label {
+.time-panel-label, .search-clients {
     width: 80px;
     min-width: 80px;
     display: flex;
