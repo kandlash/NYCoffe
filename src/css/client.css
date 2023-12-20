@@ -1,16 +1,48 @@
+@import 'vars.css';
+
 .client-container{
     display: flex;
+    align-items: center;
+
     column-gap: 50px;
-    padding: 10px 0;
+    padding: 10px 10px;
     border-bottom: 1px solid black;
+    transition: all 0.15s;
+}
+
+.client-container:hover{
+    background-color: #00884481;
 }
 
 .name-container, .arrival-time-container, button, .exit-time-container, .chek-box-container, .card-input-container{
     width: 80px;
     min-width: 80px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.exit-button{
+    background-color: var(--yellow);
+    color: black;
+    border:none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: all 0.15s;
+}
+
+.exit-button:hover{
+    cursor: pointer;
+    border-radius: 16px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.192);
 }
 
 .card-input-container input{
     width: 100%;
+}
+
+.chek-box-container input{
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
 }

@@ -18,7 +18,7 @@ const ClientPanel = (props) => {
             <div className="arrival-time-container">{props.arrival_time}</div>
             {!props.isExit ? (
                 <div>
-                    <button className="exit-b" onClick={handleExit}>Ушел</button>
+                    <button className="exit-button" onClick={handleExit}>Ушел</button>
                     
                 </div>
             ) : (
