@@ -18,7 +18,7 @@ const ClientPanel = (props) => {
             <div className="arrival-time-container">{props.arrival_time}</div>
             {!props.isExit ? (
                 <div>
-                    <button onClick={handleExit}>Ушел</button>
+                    <button className="exit-b" onClick={handleExit}>Ушел</button>
                     
                 </div>
             ) : (
@@ -33,7 +33,7 @@ const ClientPanel = (props) => {
             <div className="chek-box-container"><input type="checkbox"></input></div>
             <div className="chek-box-container"><input type="checkbox"></input></div>
             <div className="card-input-container"><input type="number"></input></div>
-            {/* <button onClick={handleRemove}>Удалить</button> */}
+            <button onClick={handleRemove}>Удалить</button>
         </div>
     );
 };

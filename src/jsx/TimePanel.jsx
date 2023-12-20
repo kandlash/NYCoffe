@@ -9,7 +9,7 @@ const TimePanel = () => {
 
   useEffect(() => {
     localStorage.setItem("clients", JSON.stringify(clients));
-    // localStorage.clear();
+     localStorage.clear();
   }, [clients]);
 
   const handleAddClient = (clientName) => {
@@ -63,8 +63,9 @@ const TimePanel = () => {
             onRemove={() => handleClientRemove(index)}
           />
         ))}
-        <AddNewClientPanel onAddClient={handleAddClient} />
+        
       </div>
+      <AddNewClientPanel onAddClient={handleAddClient} />
     </div>
   );
 };

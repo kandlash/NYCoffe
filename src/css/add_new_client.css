@@ -1,0 +1,52 @@
+@import 'vars.css';
+
+.add-new-client-panel-container{
+    padding: 10px 0px;
+    background-color: black;
+    color: white;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.input-container{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.client-name-input-field{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 13px;
+    background: var(--white);
+    font-weight: bold;   
+}
+
+.add-client-button{
+    width: 200px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 0;
+    border-radius: 9px;
+    border: none;
+    background: var(--yellow);
+}
+
+.logotype-container{
+    width: 350px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.logotype-image{
+    height: 70px;
+    width: 70px;
+}

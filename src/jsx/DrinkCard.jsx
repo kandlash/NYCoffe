@@ -5,17 +5,12 @@ import "../css/drink_card.css"
 
 const DrinkCard = (props) =>{
     return(
-        <div className="drink-card-container" onClick={() => props.onClick(props.name)}>
-            <div className="drink-background">
-                {
-                    props.img ? (<><img src={props.img} alt="drink-img" /></>) : (<><img src={default_img} alt="default-img" /></>)
-                }
-            </div>
-            <div className="drink-name">
+        <div style={props.style} className="drink-card-container">
+            <button onClick={() => props.onClick(props.name)} className="drink-button">
                 {
                     props.name ? (<>{props.name}</>) : (<>Кремпай</>)
                 }
-            </div>
+            </button>
         </div>
     )
 }

@@ -46,13 +46,13 @@ const DrinkToCheque = (props) => {
             </div>
             {currentContent === "drinkValue" ? (
                 <div className="drink-to-cheque-buttons-container value-buttons">
-                    <div onClick={() => handleChangeContent("Большой")}
+                    <div onClick={() => handleChangeContent("БОЛЬШОЙ")}
                         className="drink-to-cheque-button">
-                        Большой
+                        БОЛЬШОЙ
                     </div>
-                    <div onClick={() => handleChangeContent("Стандартный")}
+                    <div onClick={() => handleChangeContent("СТАНДАРТ")}
                         className="drink-to-cheque-button">
-                        Стандартный
+                        СТАНДАРТ
                     </div>
                 </div>
             ) : (

@@ -21,6 +21,9 @@ function App() {
   return (
     <div className="App">
       <TimePanel switchPanel={switchPanel}></TimePanel>
+      <div className="drinks-panel-title--">
+        Напитки
+      </div>
       {currentPanel === "cheque" && <DrinkToCheque switchPanel={switchPanel} selectedDrink={selectedDrink} />}
       {currentPanel === "drinks" && <DrinksPanel onDrinkCardClick={handleDrinkCardClick}/>}
     </div>
