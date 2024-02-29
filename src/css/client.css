@@ -10,13 +10,32 @@
     transition: all 0.15s;
 }
 
+.chek-box-container select{
+    font-size: 1rem;
+    text-align: center;
+    color: black;
+    border-radius: 25px;
+    width: 525px;
+    padding: 5px 15px;
+    background-color: #FFC53E;
+    border: none;
+}
+
+.chek-box-container select:focus{
+    border: none;
+}
+
+.chek-box-container select option:checked, option:hover {
+    background-color: #866720;
+  }
+
 .client-container:hover{
-    background-color: #00884481;
+    /* background-color: #00884481; */
 }
 
 .name-container, .arrival-time-container, button, .exit-time-container, .chek-box-container, .card-input-container{
-    width: 80px;
-    min-width: 80px;
+    width: 100px;
+    min-width: 100px;
     display: flex;
     align-items: center;
     justify-content: center;

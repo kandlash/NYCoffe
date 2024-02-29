@@ -13,7 +13,7 @@ const ClientPanel = (props) => {
     };
 
     return (
-        <div className="client-container">
+        <div className="client-container" style={props.style}>
             <div className="name-container">{props.name}</div>
             <div className="arrival-time-container">{props.arrival_time}</div>
             {!props.isExit ? (
@@ -27,12 +27,18 @@ const ClientPanel = (props) => {
                 </>
 
             )}
+            <div className="chek-box-container"><input type="number"></input></div>
+            <div className="chek-box-container">
+                <select >
+                    <option>нет</option>
+                    <option>15 минут</option>
+                    <option>30 минут</option>
+                </select>
+            </div>
             <div className="chek-box-container"><input type="checkbox"></input></div>
             <div className="chek-box-container"><input type="checkbox"></input></div>
-            <div className="chek-box-container"><input type="checkbox"></input></div>
-            <div className="chek-box-container"><input type="checkbox"></input></div>
-            <div className="chek-box-container"><input type="checkbox"></input></div>
-            <div className="card-input-container"><input type="number"></input></div>
+            <div className="chek-box-container"></div>
+            <div className="card-input-container"><input type="text"></input></div>
             <button onClick={handleRemove}>Удалить</button>
         </div>
     );

@@ -47,24 +47,15 @@ const TimePanel = () => {
   return (
     <div className="time-panel-wrapper">
       <div className="time-panel-labels">
-        <div className="time-panel-label">Имена</div>
-        <div className="time-panel-label">Прибытие</div>
-        <div className="time-panel-label">Отбытие</div>
+        <div className="time-panel-label">Имя</div>
+        <div className="time-panel-label">Начало</div>
+        <div className="time-panel-label">Конец</div>
         <div className="time-panel-label">Карта</div>
-        <div className="time-panel-label" id="card-show">15 минут</div>
-        <div className="time-panel-label" id="card-show">30 минут</div>
-        <div className="time-panel-label" id="card-hide">Сотрудник</div>
-        <div className="time-panel-label" id="card-hide">Именинник</div>
-        <div className="time-panel-label" id="card-show">Номер карты</div>
+        <div className="time-panel-label">Скидка</div>
+        <div className="time-panel-label">Сотрудник</div>
+        <div className="time-panel-label">Именинник</div>
         <div className="time-panel-label">Цена</div>
-        <div className="search-clients">
-          <input
-            type="search"
-            placeholder="Найти клиента"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
+        <div className="time-panel-label">Комментарий</div>
       </div>
       <div className="time-panel-container">
         {filteredClients.map((client, index) => (
@@ -76,6 +67,7 @@ const TimePanel = () => {
             isExit={client.isExit}
             onExit={() => handleClientExit(index)}
             onRemove={() => handleClientRemove(index)}
+            style={{backgroundColor: index % 2 === 0 ? '#016B36' : '#009B4D'}}
           />
         ))}
       </div>

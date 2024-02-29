@@ -1,19 +1,22 @@
+.time-panel-wrapper{
+    height: 100vh;
+}
 .time-panel-labels {
     display: flex;
     column-gap: 50px;
     background-color: black;
     color: #FAF5E9;
 
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.1rem;
+    font-weight: 300;
     padding: 10px 10px;
     height: 50px;
 
 }
 
 .time-panel-label, .search-clients {
-    width: 80px;
-    min-width: 80px;
+    width: 100px;
+    min-width: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,10 +27,10 @@
     background-color: #009B4D;
     color: white;
     font-size: 1.2rem;
-    min-height: 300px;
-    max-height: 300px;
+    /* min-height: 300px;
+    max-height: 300px; */
+    height: 81.6vh;
     overflow-y: scroll;
-
 }
 
 /* Style the scrollbar */
