@@ -50,7 +50,7 @@ function App() {
           <TimePanel switchPanel={switchPanel}></TimePanel>
           <div className="drinks-panel-wrapper">
             {currentPanel === "cheque" && <DrinkToCheque switchPanel={switchPanel} selectedDrink={selectedDrink} />}
-            {currentPanel === "drinks" && <DrinksPanel onDrinkCardClick={handleDrinkCardClick}/>}
+            <DrinksPanel onDrinkCardClick={handleDrinkCardClick}/>
           </div>
         </div>
       )}

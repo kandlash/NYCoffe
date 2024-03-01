@@ -1,6 +1,8 @@
 // Ваш обновленный DrinkToCheque.jsx
 import React, { useState } from "react";
 import "../css/drink_to_cheque.css";
+import cofeimg from '../images/cofe-image.png';
+import arrow from '../images/arrow_back_FILL0_wght400_GRAD0_opsz24.svg'
 
 const DrinkToCheque = (props) => {
 
@@ -40,19 +42,21 @@ const DrinkToCheque = (props) => {
     };
 
     return (
-        <>
+        <div className="cheque-wrapper">
             <div className="cheque-container">
                 <div className="cheque-drink-name">{choisedValue} {props.selectedDrink}</div>
             </div>
             {currentContent === "drinkValue" ? (
                 <div className="drink-to-cheque-buttons-container value-buttons">
-                    <div onClick={() => handleChangeContent("БОЛЬШОЙ")}
+                    <div onClick={() => handleChangeContent("Большой")}
                         className="drink-to-cheque-button">
-                        БОЛЬШОЙ
+                        <img width="80px" height="80px" alt="cheto" src={cofeimg}></img>
+                        Большой
                     </div>
-                    <div onClick={() => handleChangeContent("СТАНДАРТ")}
+                    <div onClick={() => handleChangeContent("Стандарт")}
                         className="drink-to-cheque-button">
-                        СТАНДАРТ
+                        <img className="small-img" width="50px" height="50px" alt="cheto" src={cofeimg}></img>
+                        Стандарт
                     </div>
                 </div>
             ) : (
@@ -92,18 +96,16 @@ const DrinkToCheque = (props) => {
                         </div>
                     </div>
                     <div className="drink-to-cheque-extra-for-drink-navigation-buttons">
-                        <button onClick={() => setCurrentContent("drinkValue")} className="drink-to-cheque-extra-for-drink-navigation-button">
-                            Назад
-                        </button>
-                        <button className="drink-to-cheque-extra-for-drink-navigation-button">
-                            Готово
-                        </button>
+
+
                     </div>
                 </div>
             )}
-
-            <button onClick={() => props.switchPanel("drinks")}>Вернуться</button>
-        </>
+            <button onClick={() => setCurrentContent("drinkValue")} className="drink-to-cheque-extra-for-drink-navigation-button">
+                <img alt="back-arrow" src={arrow}></img>
+            </button>
+            <button className="close-button" onClick={() => props.switchPanel("drinks")}>X</button>
+        </div>
     );
 }
 

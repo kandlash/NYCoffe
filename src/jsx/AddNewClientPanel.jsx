@@ -25,7 +25,7 @@ const AddNewClientPanel = ({ onAddClient }) => {
       </div>
       <div className="logotype-container">
         <img className="logotype-image" alt="nycoffelogo" src={logo}></img>
-        <div className="logo-text">NEW YORK COFFE</div>
+        <div className="logo-text">NEW YORK COFFEE</div>
       </div>
     </div>
   );

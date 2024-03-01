@@ -1,3 +1,56 @@
+.cheque-wrapper{
+    position: absolute;
+    left: 50%;
+    margin-top: 150px;
+    transform: translate(-50%);
+    width: 700px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #2C2C2C;
+    color: white;
+    border-radius: 10px;
+    z-index: 999999;
+}
+
+.cheque-wrapper .close-button{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border: none;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    transform: scale(0.4);
+    font-size: 4rem;
+    font-weight: bold;
+    color:#2C2C2C;
+    padding: 0;
+    cursor: pointer;
+}
+
+.cheque-wrapper .navigation-button{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    border: none;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    transform: scale(0.4);
+    font-size: 4rem;
+    font-weight: bold;
+    color:#2C2C2C;
+    padding: 0;
+    cursor: pointer;
+}
+
+.cheque-wrapper .navigation-button img{
+    transform: scale(3);
+}
+
 .cheque-drink-name{
     width: 100%;
     display: flex;
@@ -21,13 +74,17 @@
     width: 220px;
     height: 120px;
     padding: 10px;
-    border: 1px solid black;
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     font-size: 2rem;
     font-weight: bold;
     transition: all 0.15s;
+}
+
+.drink-to-cheque-button .small-img{
+    margin-top: 25px;
 }
 
 .drink-to-cheque-button:hover{
