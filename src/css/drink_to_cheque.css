@@ -32,6 +32,7 @@
 }
 
 .cheque-wrapper .navigation-button{
+    display: none;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -47,11 +48,38 @@
     cursor: pointer;
 }
 
+.cheque-wrapper .create-button{
+    display: none;
+    background-color: #006C36;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    padding: 10px 25px;
+    width: 176px;
+    height: 50px;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.cheque-wrapper .visible{
+    display:flex;
+}
+
 .cheque-wrapper .navigation-button img{
     transform: scale(3);
 }
 
+.drink-to-cheque-extra-for-drink-navigation-button{
+    display: none;
+}
+
+.drink-to-cheque-extra-for-drink-navigation-button .visible{
+    display: block;
+}
+
 .cheque-drink-name{
+    padding-top: 50px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -101,12 +129,21 @@
     column-gap: 150px;
 }
 
+.dtink-to-cheque-extra-for-drink-wrapper{
+    height: 60%;
+}
+
 .drink-to-cheque-extra-for-drink{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 200px;
+    margin-top: 50px;
+}
+
+.drink-to-cheque-extra-for-drink-title{
+    font-size: 1.5rem;
 }
 
 .drink-to-cheque-extra-for-drink-buttons{
@@ -115,4 +152,21 @@
     justify-content: center;
     column-gap: 20px;
     width: 100px;
+}
+
+.drink-to-cheque-extra-for-drink-button{
+    border: none;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    transform: scale(0.4);
+    font-size: 4rem;
+    font-weight: bold;
+    color:#2C2C2C;
+    padding: 0;
+    cursor: pointer;    
+}
+
+.drink-to-cheque-extra-for-drink-value{
+    font-size: 1.5rem;
 }

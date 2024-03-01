@@ -95,14 +95,13 @@ const DrinkToCheque = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="drink-to-cheque-extra-for-drink-navigation-buttons">
-
-
-                    </div>
                 </div>
             )}
-            <button onClick={() => setCurrentContent("drinkValue")} className="drink-to-cheque-extra-for-drink-navigation-button">
+            <button onClick={() => setCurrentContent("drinkValue")} className={"navigation-button" + (currentContent === "drinkValue" ? " " : " visible")}>
                 <img alt="back-arrow" src={arrow}></img>
+            </button>
+            <button onClick={() => setCurrentContent("drinkValue")} className={"create-button" + (currentContent === "drinkValue" ? " " : " visible")}>
+                Создать
             </button>
             <button className="close-button" onClick={() => props.switchPanel("drinks")}>X</button>
         </div>
