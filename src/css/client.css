@@ -19,6 +19,7 @@
     padding: 5px 15px;
     background-color: #FFC53E;
     border: none;
+    cursor: pointer;
 }
 
 .chek-box-container select:focus{
@@ -45,14 +46,14 @@
     background-color: var(--yellow);
     color: black;
     border:none;
-    border-radius: 10px;
+    padding: 4px 0px;
+    border-radius: 5px;
     font-size: 1.2rem;
     transition: all 0.15s;
 }
 
 .exit-button:hover{
     cursor: pointer;
-    border-radius: 16px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.192);
 }
 
@@ -64,4 +65,28 @@
     cursor: pointer;
     height: 25px;
     width: 25px;
+}
+
+
+.wider{
+    width: 100px;
+}
+
+.wider input{
+    width: 80%;
+    height: 15px;
+    background-color: transparent;
+    border: 3px solid #004D26;
+    border-radius: 6px;
+    color: white;
+    cursor:text;
+}
+
+.comment-input{
+    width: 80%;
+    height: 15px;
+    background-color: transparent;
+    border: 3px solid #004D26;
+    border-radius: 6px;
+    color: white;   
 }

@@ -21,7 +21,7 @@ const AddNewClientPanel = ({ onAddClient }) => {
           value={clientName}
           onChange={(e) => setClientName(e.target.value)}
         />
-        <button className="add-client-button" onClick={handleAddClient}>ПРИШЕЛ</button>
+        <button className="add-client-button" onClick={handleAddClient}>Добавить</button>
       </div>
       <div className="logotype-container">
         <img className="logotype-image" alt="nycoffelogo" src={logo}></img>

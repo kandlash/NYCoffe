@@ -1,4 +1,3 @@
-// Ваш обновленный ClientPanel.jsx
 import React from "react";
 import '../css/client.css'
 
@@ -27,7 +26,7 @@ const ClientPanel = (props) => {
                 </>
 
             )}
-            <div className="chek-box-container"><input type="number"></input></div>
+            <div className="chek-box-container wider"><input type="text"></input></div>
             <div className="chek-box-container">
                 <select >
                     <option>нет</option>
@@ -38,7 +37,7 @@ const ClientPanel = (props) => {
             <div className="chek-box-container"><input type="checkbox"></input></div>
             <div className="chek-box-container"><input type="checkbox"></input></div>
             <div className="chek-box-container"></div>
-            <div className="card-input-container"><input type="text"></input></div>
+            <div className="card-input-container"><input className="comment-input" type="text"></input></div>
             <button onClick={handleRemove}>Удалить</button>
         </div>
     );

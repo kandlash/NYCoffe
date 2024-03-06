@@ -1,6 +1,36 @@
 .time-panel-wrapper{
     height: 100vh;
 }
+.navigation-panel{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.616);;
+}
+
+.nav-elements-wrapper{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.nav-elements-wrapper .panel-name{
+    font-size: 1.6rem;
+}
+
 .time-panel-labels {
     display: flex;
     column-gap: 50px;
@@ -10,7 +40,7 @@
     font-size: 1.1rem;
     font-weight: 300;
     padding: 10px 10px;
-    height: 50px;
+    height: 39px;
 
 }
 
@@ -23,13 +53,17 @@
     text-align: center;
 }
 
+.wider-label{
+    width: 100px;
+}
+
 .time-panel-container {
     background-color: #009B4D;
     color: white;
     font-size: 1.2rem;
     /* min-height: 300px;
     max-height: 300px; */
-    height: 81.6vh;
+    height: 76vh;
     overflow-y: scroll;
 }
 
