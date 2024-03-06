@@ -117,8 +117,7 @@
 
 .drink-to-cheque-button:hover{
     cursor: pointer;
-    transform: translateY(-5px);
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.507);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.24);
 }
 
 .drink-to-cheque-extra-for-drink-container{

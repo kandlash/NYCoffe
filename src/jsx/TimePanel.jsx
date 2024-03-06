@@ -46,16 +46,6 @@ const TimePanel = () => {
 
   return (
     <div className="time-panel-wrapper">
-      <div className="navigation-panel">
-        <div className="nav-elements-wrapper">
-          <div className="menu-button-container">
-            <button className="menu-button">≡</button>
-          </div>
-          <div className="panel-name">
-            Заказы
-          </div>
-        </div>
-      </div>
       <div className="time-panel-labels">
         <div className="time-panel-label">Имя</div>
         <div className="time-panel-label">Начало</div>
