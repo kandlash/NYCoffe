@@ -4,12 +4,14 @@ import DrinksPanel from './jsx/DrinksPanel';
 import TimePanel from './jsx/TimePanel';
 import DrinkToCheque from "./jsx/DrinkToCheque";
 import AuthPanel from "./jsx/AuthPanel";
+import SideBarMenu from "./jsx/SideBarMenu";
 
 function App() {
   const [currentMainPanel, setCurrentMainPanel] = useState("timepanel")
   const [currentPanel, setCurrentPanel] = useState("drinks");
   const [selectedDrink, setSelectedDrink] = useState("");
   const [isAuthPanel, setIsAuthPanel] = useState(true);
+  const [isSideBarMenuOpen, setSideBarMenuOpen] = useState(false);
 
   const switchPanel = (panel) => {
     setCurrentPanel(panel);
@@ -24,6 +26,10 @@ function App() {
     setIsAuthPanel(false);
   };
 
+  const handleOnCloseSidebarClick = () => {
+    setSideBarMenuOpen(false);
+  };
+
   return (
     <div className="wrapper">
       {isAuthPanel ? (
@@ -35,14 +41,16 @@ function App() {
             <div className="navigation-panel">
               <div className="nav-elements-wrapper">
                 <div className="menu-button-container">
-                  <button className="menu-button">≡</button>
+                  <button onClick={() => setSideBarMenuOpen(true)} className="menu-button">≡</button>
                 </div>
                 <div className="panel-name">
                   Заказы
                 </div>
               </div>
             </div>
+            
           )}
+          {isSideBarMenuOpen && <SideBarMenu onCloseClick={handleOnCloseSidebarClick}></SideBarMenu>}
           {currentMainPanel === "timepanel" && (
             <>
               <TimePanel switchPanel={switchPanel}></TimePanel>

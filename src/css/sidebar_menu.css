@@ -1,0 +1,17 @@
+.smb-background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.438);
+}
+
+.sidebarmenu-wrapper{
+    width: 400px;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    z-index: 99999;
+}
