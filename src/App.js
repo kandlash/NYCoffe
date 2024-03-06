@@ -6,7 +6,7 @@ import DrinkToCheque from "./jsx/DrinkToCheque";
 import AuthPanel from "./jsx/AuthPanel";
 
 function App() {
-  const [currentMainPanel, setCurrentMainPanel] = useState("drinks")
+  const [currentMainPanel, setCurrentMainPanel] = useState("timepanel")
   const [currentPanel, setCurrentPanel] = useState("drinks");
   const [selectedDrink, setSelectedDrink] = useState("");
   const [isAuthPanel, setIsAuthPanel] = useState(true);
