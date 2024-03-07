@@ -1,5 +1,9 @@
 import React from "react";
 import '../css/sidebar_menu.css'
+import people_icon from '../images/people_icon.svg';
+import profile_icon from '../images/profile_icon.svg';
+import card_icon from '../images/card_icon.svg';
+import coffee_icon from '../images/coffee_icon.svg';
 
 const SideBarMenu = ({ onCloseClick }) => {
 
@@ -17,16 +21,20 @@ const SideBarMenu = ({ onCloseClick }) => {
                         </button>
                     </div>
                     <div className="sbm-element">
-                        Профиль
+                    <img className="sbm-element-icon" alt="people_icon" src={profile_icon}></img>
+                        <p>Профиль</p>
                     </div>
                     <div className="sbm-element">
-                        Заказы
+                        <img className="sbm-element-icon" alt="people_icon" src={people_icon}></img>
+                        <p>Заказы</p>
                     </div>
                     <div className="sbm-element">
-                        База заказов
+                    <img className="sbm-element-icon" alt="people_icon" src={coffee_icon}></img>
+                        <p>База заказов</p>
                     </div>
                     <div className="sbm-element">
-                        База карт лояльности
+                    <img className="sbm-element-icon" alt="people_icon" src={card_icon}></img>
+                        <p>База карт лояльности</p>
                     </div>
                 </div>
             </div>
