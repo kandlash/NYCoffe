@@ -32,7 +32,7 @@ const WorkSideBarMenu = ({ onCloseClick }) => {
                             <p>База заказов</p>
                         </div>
                     </Link>
-                    <Link to="loyaltycards">
+                    <Link to="/loyaltycards">
                         <div className="sbm-element">
                         <img className="sbm-element-icon" alt="people_icon" src={card_icon}></img>
                             <p>База карт лояльности</p>
