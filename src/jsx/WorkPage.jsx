@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import TimePanel from "./TimePanel";
 import DrinksPanel from "./DrinksPanel";
 import DrinkToCheque from "./DrinkToCheque";
-import Navigation from "./Navigation";
+import WorkNavigation from "./WorkNavigation";
 
 const WorkPage = () =>{
     const [drinkToChequeName, setDrinkToChequeName] = useState("");
@@ -20,7 +20,7 @@ const WorkPage = () =>{
 
     return(
         <>
-            <Navigation name="Заказы"/>
+            <WorkNavigation name="Заказы"/>
             <TimePanel></TimePanel>
             <DrinksPanel onDrinkCardClick={handleDrinkCardClick}></DrinksPanel>
             {isCheque === true && <DrinkToCheque closeCheque={closeCheque} drinkName={drinkToChequeName} />}

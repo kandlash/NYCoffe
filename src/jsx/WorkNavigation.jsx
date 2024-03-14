@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import SideBarMenu from "./SideBarMenu";
+import WorkSideBarMenu from "./WorkSideBarMenu";
 
-const Navigation = (props) => {
+const WorkNavigation = (props) => {
     const [sideBarMenuOpen, setSideBarMenuOpen] = useState(false);
 
     const handleClose = () =>{
@@ -20,9 +20,9 @@ const Navigation = (props) => {
                     </div>
                 </div>
             </div>
-            {sideBarMenuOpen && <SideBarMenu onCloseClick={handleClose}/>}
+            {sideBarMenuOpen && <WorkSideBarMenu onCloseClick={handleClose}/>}
         </>
     )
 }
 
-export default Navigation;
+export default WorkNavigation;
