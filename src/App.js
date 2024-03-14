@@ -47,7 +47,7 @@ function App() {
                     <button onClick={() => setSideBarMenuOpen(true)} className="menu-button">≡</button>
                   </div>
                   <div className="panel-name">
-                    Заказы
+                    Кто
                   </div>
                 </div>
               </div>
