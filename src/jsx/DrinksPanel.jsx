@@ -3,9 +3,10 @@ import React from "react";
 import DrinkCard from "./DrinkCard";
 import "../css/drinks_panel.css"
 
-const DrinksPanel = (props) => {
+const DrinksPanel = ({onDrinkCardClick}) => {
     const handleDrinkCardClick = (drinkName) => {
-        props.onDrinkCardClick(drinkName);
+        onDrinkCardClick(drinkName);
+        console.log(drinkName);
     };
     const colors = [
         ['#BA0405', '#B50405', '#A30203', '#9D0203', '#880001'],

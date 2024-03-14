@@ -44,7 +44,7 @@ const DrinkToCheque = (props) => {
     return (
         <div className="cheque-wrapper">
             <div className="cheque-container">
-                <div className="cheque-drink-name">{choisedValue} {props.selectedDrink}</div>
+                <div className="cheque-drink-name">{choisedValue} {props.drinkName}</div>
             </div>
             {currentContent === "drinkValue" ? (
                 <div className="drink-to-cheque-buttons-container value-buttons">
@@ -103,7 +103,7 @@ const DrinkToCheque = (props) => {
             <button onClick={() => setCurrentContent("drinkValue")} className={"create-button" + (currentContent === "drinkValue" ? " " : " visible")}>
                 Создать
             </button>
-            <button className="close-button" onClick={() => props.switchPanel("drinks")}>X</button>
+            <button className="close-button" onClick={() => props.closeCheque()}>X</button>
         </div>
     );
 }
