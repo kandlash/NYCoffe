@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const WorkActivation = ({onButtonClick}) => {
+const ActivationPage = ({onButtonClick}) => {
 
     const handleClick = () =>{
         onButtonClick();
@@ -19,11 +20,13 @@ const WorkActivation = ({onButtonClick}) => {
                             <input type="password" placeholder="Введите ключ активации" />
                         </div>
                         <div className="activation-button-containet">
-                            <button onClick={handleClick} className="activation-button">Активировать</button>
+                            <Link to="/authtowork">
+                                <button className="activation-button">Активировать</button>
+                            </Link>
                         </div>
-                        <div className="without-activation-link">
+                        <Link to="/auth" className="without-activation-link">
                             Продолжить без активации
-                        </div>
+                        </Link>
                     </div>
 
             </div>
@@ -31,4 +34,4 @@ const WorkActivation = ({onButtonClick}) => {
     )
 }
 
-export default WorkActivation;
+export default ActivationPage;

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import '../css/authpanel.css'
-const AuthPanel = ({onButtonClick}) => {
+
+const AuthPage = ({onButtonClick}) => {
 
     const handleClick = () =>{
         onButtonClick();
@@ -21,9 +23,12 @@ const AuthPanel = ({onButtonClick}) => {
                         <div className="auth-input">
                             <input type="password" placeholder="Пароль" />
                         </div>
-                        <div className="auth-button">
-                            <button onClick={handleClick} className="login-button">Войти</button>
-                        </div>
+                        <Link to="/profile">
+                            <div className="auth-button">
+                                <button className="login-button">Войти</button>
+                            </div>
+                        </Link>
+
                     </div>
 
             </div>
@@ -31,4 +36,4 @@ const AuthPanel = ({onButtonClick}) => {
     )
 }
 
-export default AuthPanel;
+export default AuthPage;
