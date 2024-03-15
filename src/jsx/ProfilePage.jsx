@@ -1,10 +1,11 @@
 import React from "react";
+import ProfileLeft from "./ProfileLeft";
 
 const ProfilePage = () => {
     return(
-        <>
-            <h1>Profile</h1>
-        </>
+        <div className="profile-wrapper">
+            <ProfileLeft></ProfileLeft>
+        </div>
     )
 }
 
