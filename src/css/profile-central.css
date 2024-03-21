@@ -1,0 +1,38 @@
+.profile-central-wrapper{
+    width: 1000px;
+    background-color: #1B1B1B;
+    height: 600px;
+    padding: 25px 0px;
+    color: white;
+}
+
+.profile-central-title-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profile-central-title{
+    font-size: 1.2rem;
+}
+
+.profile-central-title:hover{
+    cursor: pointer;
+}
+
+.profile-central-main-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.schedule-watch-container table, .schedule-filling-container table{
+    width: 700px;
+    height: 200px;
+    text-align: center;
+}
+.shedule-filling-week-swap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
