@@ -43,6 +43,42 @@ const ScheduleFilling = () => {
         return `${startOfWeek}-${endOfWeek}`;
     };
 
+    const sendDataToBackend = (data) => {
+        // Здесь вы можете использовать библиотеку для отправки HTTP запросов, например, fetch или axios
+        // Пример с использованием fetch:
+        fetch('http://example.com/api/data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data sent successfully:', data);
+            // Здесь можно добавить дополнительную логику в случае успешной отправки данных
+        })
+        .catch(error => {
+            console.error('Error sending data:', error);
+            // Здесь можно добавить обработку ошибок при отправке данных
+        });
+    };
+
+    const handleSendData = () => {
+        const dataToSend = {
+            week: formatCurrentWeek(), // Форматируем текущую неделю
+            shifts: selectedShifts,    // Выбранные смены
+        };
+        console.log(dataToSend);
+    
+        //sendDataToBackend(dataToSend); // Отправляем данные на сервер
+    };
+
     return(
         <div className="schedule-filling-container">
             <div className="shedule-filling-table">
@@ -99,7 +135,7 @@ const ScheduleFilling = () => {
                 <button onClick={goToNextWeek}>right</button>
             </div>
             <div className="shedule-filling-week-save">
-                <button>Сохранить</button>
+                <button onClick={handleSendData}>Сохранить</button>
             </div>
         </div>
     )
