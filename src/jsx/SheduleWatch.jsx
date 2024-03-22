@@ -54,8 +54,6 @@ const ScheduleWatch = () => {
                                 {Object.keys(scheduleData.shifts).map(day => (
                                     <td key={day}>
                                         <div className={`shedule-watch-table-content ${scheduleData.shifts[day] === shift ? 's' : ''}`}>
-                                            {/* Отобразите здесь что угодно, например, день или пусто */}
-                                            {scheduleData.shifts[day] === shift ? "*" : ''}
                                         </div>
                                     </td>
                                 ))}

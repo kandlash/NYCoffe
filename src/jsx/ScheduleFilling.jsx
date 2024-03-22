@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
+import left_arrow from "../images/left_arrow.svg";
+import right_arrow from "../images/right_arrow.svg";
 
 const ScheduleFilling = () => {
     // Состояние для хранения выбранных смен
@@ -130,9 +132,13 @@ const ScheduleFilling = () => {
                 </table>
             </div>
             <div className="shedule-filling-week-swap">
-                <button onClick={goToPreviousWeek}>left</button>
+                <button onClick={goToPreviousWeek}>
+                    <img src={left_arrow} alt="leftarrow"/>
+                </button>
                 <p>{formatCurrentWeek()}</p>
-                <button onClick={goToNextWeek}>right</button>
+                <button onClick={goToNextWeek}>
+                    <img src={right_arrow} alt="rightarrow"/>
+                </button>
             </div>
             <div className="shedule-filling-week-save">
                 <button onClick={handleSendData}>Сохранить</button>
