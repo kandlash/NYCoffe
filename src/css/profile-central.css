@@ -32,7 +32,7 @@
 
 .schedule-watch-container table, .schedule-filling-container table{
     width: 100%;
-    height: 200px;
+    height: 350px;
     text-align: center;
     margin-top: 50px;
     padding-right: 70px;
@@ -41,6 +41,10 @@
 .schedule-watch-container table .tds{
     position: relative; /* Необходимо для позиционирования */
     
+}
+
+.coloredtd{
+    background-color: #016B36;
 }
 
 .schedule-filling-container table input{
@@ -77,4 +81,30 @@
     height: 25px;
     background-color: white;
     border-radius: 100%;
+}
+
+.shedule-filling-week-save{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shedule-filling-week-save button{
+    border: none;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    color: white;
+    padding: 10px 15px;
+    width: 150px;
+    background-color: #016B36;
+    transition: all 0.15s;   
+}
+
+.shedule-filling-week-save button:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.shedule-filling-week-save button:active{
+    transform: scale(0.99);
 }
