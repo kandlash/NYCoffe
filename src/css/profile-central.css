@@ -39,9 +39,8 @@
 }
 
 .schedule-watch-container table .tds{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative; /* Необходимо для позиционирования */
+    
 }
 
 .schedule-filling-container table input{
@@ -64,6 +63,13 @@
 .shedule-filling-week-swap button:hover{
     cursor: pointer;
 
+}
+
+.shedule-watch-table-content {
+    position: absolute; /* Позиционирование абсолютное */
+    top: 50%; /* Размещение сверху на 50% */
+    left: 50%; /* Размещение слева на 50% */
+    transform: translate(-50%, -50%); /* Перемещение обратно на половину своего размера */
 }
 
 .s{

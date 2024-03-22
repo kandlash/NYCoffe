@@ -52,7 +52,7 @@ const ScheduleWatch = () => {
                             <tr key={shift}>
                                 <td>{shift} смена</td>
                                 {Object.keys(scheduleData.shifts).map(day => (
-                                    <td key={day}>
+                                    <td className="tds" key={day}>
                                         <div className={`shedule-watch-table-content ${scheduleData.shifts[day] === shift ? 's' : ''}`}>
                                         </div>
                                     </td>
