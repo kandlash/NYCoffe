@@ -1,9 +1,12 @@
 import React from "react";
+import WorkNavigation from "./WorkNavigation";
+import LoayltyTable from "./LoayltyTable";
 
 const LoyaltyCards = () => {
     return(
         <>
-            <h1>LoyaltyCards</h1>
+            <WorkNavigation name="Карты"/>
+            <LoayltyTable/>
         </>
     )
 }

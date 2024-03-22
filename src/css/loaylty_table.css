@@ -1,0 +1,18 @@
+.loaylty-table-container{
+    width: ;
+}
+
+.visit{
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 100%;
+}
+
+.tdvisit{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    column-gap: 10px;
+}
