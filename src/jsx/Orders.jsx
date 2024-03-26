@@ -1,9 +1,10 @@
 import React from "react";
+import WorkNavigation from "./WorkNavigation";
 
 const Orders = () => {
     return(
         <>
-            <h1>Orders</h1>
+            <WorkNavigation name="Заказы"/>
         </>
     )
 }

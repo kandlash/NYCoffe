@@ -22,8 +22,11 @@ const WorkPage = () =>{
         <>
             <WorkNavigation name="Заказы"/>
             <TimePanel></TimePanel>
-            <DrinksPanel onDrinkCardClick={handleDrinkCardClick}></DrinksPanel>
-            {isCheque === true && <DrinkToCheque closeCheque={closeCheque} drinkName={drinkToChequeName} />}
+            <div className="drinks-work-container">
+                <DrinksPanel onDrinkCardClick={handleDrinkCardClick}></DrinksPanel>
+                {isCheque === true && <DrinkToCheque closeCheque={closeCheque} drinkName={drinkToChequeName} />}
+            </div>
+
         </>
     )
 }

@@ -1,7 +1,10 @@
+.drinks-work-container{
+    position: relative;
+}
 .cheque-wrapper{
     position: absolute;
     left: 50%;
-    margin-top: 150px;
+    margin-top: -562px;
     transform: translate(-50%);
     width: 700px;
     height: 400px;
