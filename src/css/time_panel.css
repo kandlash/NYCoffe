@@ -11,8 +11,12 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.616);;
 }
 
+.noborder{
+    border:none;
+}
+
 .nav-elements-wrapper{
-    width: 200px;
+    width: 250px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -29,6 +33,7 @@
 
 .nav-elements-wrapper .panel-name{
     font-size: 1.6rem;
+    width: 150px;
 }
 
 .time-panel-labels {

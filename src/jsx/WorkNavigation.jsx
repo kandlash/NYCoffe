@@ -10,7 +10,7 @@ const WorkNavigation = (props) => {
 
     return (
         <>
-            <div className="navigation-panel">
+            <div className={`navigation-panel ${props.border ? 'noborder' : ''}`}>
                 <div className="nav-elements-wrapper">
                     <div className="menu-button-container">
                         <button onClick={() => setSideBarMenuOpen(true)} className="menu-button">≡</button>
