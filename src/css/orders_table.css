@@ -35,7 +35,24 @@
     font-size: 1.12rem;
 }
 
-.orders-table .modtr{
+/* Style the scrollbar */
+.orders-table-container::-webkit-scrollbar {
+    width: 8px;
+}
 
+.orders-table-container::-webkit-scrollbar-thumb {
+    background-color: #4C4C4C; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Border radius of the scrollbar thumb */
+}
+
+.orders-table-container::-webkit-scrollbar-track {
+    background-color: #1E1E1E; /* Color of the scrollbar track */
+    border-radius: 4px; /* Border radius of the scrollbar track */
+}
+
+/* Optional: Hide scrollbar in Firefox */
+.orders-table-container {
+    scrollbar-width: thin;
+    scrollbar-color: #4C4C4C #1E1E1E;
 }
 

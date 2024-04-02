@@ -34,11 +34,11 @@ const LoayltyTable = () => {
             <table className='loyalty-table'>
                 <thead>
                     <tr>
-                        <th>ФИО</th>
-                        <th>Номер телефона</th>
+                        <th style={{width: "355px"}}>ФИО</th>
+                        <th style={{width: "355px"}}>Номер телефона</th>
                         <th>Номер карты</th>
                         <th>Купон</th>
-                        <th>Посещение</th>
+                        <th >Посещение</th>
                     </tr>
                 </thead>
                 <tbody>
