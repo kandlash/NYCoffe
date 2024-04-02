@@ -4,10 +4,10 @@ import LoayltyTable from "./LoayltyTable";
 
 const LoyaltyCards = () => {
     return(
-        <>
-            <WorkNavigation name="Карты"/>
+        <div className="loyalty-cards-wrapper">
+            <WorkNavigation name="Карты" border={true}/>
             <LoayltyTable/>
-        </>
+        </div>
     )
 }
 

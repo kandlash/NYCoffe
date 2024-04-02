@@ -1,5 +1,33 @@
-.loaylty-table-container{
-    width: ;
+.loyalty-cards-wrapper{
+    background-image: url(../images/04d7bd5da115808a61fb43fa33a28e6e.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;    
+}
+.loyalty-table-container{
+    width: 100%;
+    height: 600px;
+    overflow-y: auto;
+}
+
+.loyalty-table{
+    text-align: center;
+    width: 100%;
+    border-spacing: 0px;
+    color: white;
+}
+
+.loyalty-table thead{
+    background-color: #2C2C2C;
+    height: 50px;
+    font-size: 1.12rem;
+}
+
+.loyalty-table tbody{
+    background-color: #016b36f2;
+    height: 300px;
+    font-size: 1.12rem;
 }
 
 .visit{
@@ -9,10 +37,4 @@
     border-radius: 100%;
 }
 
-.tdvisit{
-    width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    column-gap: 10px;
-}
+

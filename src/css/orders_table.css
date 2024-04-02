@@ -27,8 +27,15 @@
 }
 
 .orders-table tbody{
-    background-color: #016b36f2;
+    background-image: linear-gradient(to right, transparent 5%, #016b36f2 5%, #016b36f2 95%, transparent 95%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    /* background-color: #016b36f2; */
     height: 300px;
     font-size: 1.12rem;
+}
+
+.orders-table .modtr{
+
 }
 

@@ -31,7 +31,7 @@ const LoayltyTable = () => {
 
     return (
         <div className='loaylty-table-container'>
-            <table>
+            <table className='loyalty-table'>
                 <thead>
                     <tr>
                         <th>ФИО</th>

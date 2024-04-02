@@ -112,12 +112,12 @@ const OrdersTable = ({ drinksData }) => {
                         <th>Сиропы</th>
                         <th>Добавки</th>
                         <th>Цена</th>
-                        <th>Комментарий</th>
+                        <th style={{width: "355px"}}>Комментарий</th>
                     </tr>
                 </thead>
                 <tbody>
                     {fakeDrinksData.map((drink, index) => (
-                        <tr key={index}>
+                        <tr className='modtr' key={index}>
                             <td>{drink.name}</td>
                             <td>{drink.volume}</td>
                             <td>{drink.syrups.join(', ')}</td>
