@@ -1,0 +1,102 @@
+.activation-work-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 100%; */
+    height: 100vh;
+    padding: 0 50px;
+    background-image: url(../images/04d7bd5da115808a61fb43fa33a28e6e.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.activation-panel{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    background-color: #009b4ed7;
+
+    width: 800px;
+    height: 500px;
+}
+
+.activation-panel-title{
+    color: white;
+    font-size: 2.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+.activation-input-container{
+    position: relative;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activation-input input{
+    width: 350px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    
+    background-color: #07562E;
+}
+
+.activation-input input::placeholder{
+    color: rgba(255, 255, 255, 0.623);
+    padding-left: 10px;
+}
+
+.activation-input-key-icon{
+    position: absolute;
+    left: -38px;
+    width: 30px;
+    height: 30px;
+}
+
+.activation-activate-or-skip-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.activation-button-container a, .activation-button-container{
+    text-decoration: none;
+    width: 150px;
+    height: 30px;
+}
+
+.activation-button{
+    border: none;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #016B36;
+}
+
+.activation-button:hover{
+    cursor: pointer;
+}
+
+
+.activation-skip{
+    margin-top: 5px;
+}
+
+.activation-skip a{
+    color: white; /* Цвет текста */
+    text-decoration: none; /* Убираем стандартное подчеркивание */
+    border-bottom: 1px solid white; /* Создаем подчеркивание */
+    padding-bottom: 2px; /* Расстояние между текстом и подчеркиванием */
+}
