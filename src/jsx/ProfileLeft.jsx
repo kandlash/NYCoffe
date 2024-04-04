@@ -3,10 +3,10 @@ import ProfileLeftHistory from "./ProfileLeftHistory";
 import ProfileLeftPersonal from "./ProfileLeftPersonal";
 import "../css/profile-left.css"
 
-const ProfileLeft = () =>{
+const ProfileLeft = (props) =>{
     return(
         <div className="profile-left-wrapper">
-            <ProfileLeftPersonal />
+            <ProfileLeftPersonal name={props.name} position={props.position}/>
             <ProfileLeftHistory />
         </div>
     )

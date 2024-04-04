@@ -6,7 +6,7 @@ import "../css/profile_page.css"
 const ProfilePage = () => {
     return(
         <div className="profile-wrapper">
-            <ProfileLeft></ProfileLeft>
+            <ProfileLeft name="Челов Чел Челиков" position="бариста"></ProfileLeft>
             <ProfileCentral></ProfileCentral>
         </div>
     )
