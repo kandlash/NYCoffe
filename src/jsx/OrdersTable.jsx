@@ -308,17 +308,6 @@ const OrdersTable = ({ drinksData }) => {
         }
     ];
 
-    const ffakeDrinksData = [
-        {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }
-    ]
-
     const [comments, setComments] = useState(Array(fakeDrinksData.length).fill(''));
 
     // Обработчик изменения комментария
