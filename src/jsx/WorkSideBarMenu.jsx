@@ -38,6 +38,14 @@ const WorkSideBarMenu = ({ onCloseClick }) => {
                             <p>База карт лояльности</p>
                         </div>
                     </Link>
+                    <div className="end-shift-container">
+                        <Link to="/authtowork">
+                            <button className="end-shift-button">
+                                Закончить смену
+                            </button>
+                        </Link>
+                    </div>
+
                 </div>
             </div>
         </div>

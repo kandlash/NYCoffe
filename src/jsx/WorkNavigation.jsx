@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WorkSideBarMenu from "./WorkSideBarMenu";
+import burger_menu_icon from "../images/burger_menu_icon.svg";
 
 const WorkNavigation = (props) => {
     const [sideBarMenuOpen, setSideBarMenuOpen] = useState(false);
@@ -13,7 +14,9 @@ const WorkNavigation = (props) => {
             <div className={`navigation-panel ${props.border ? 'noborder' : ''}`}>
                 <div className="nav-elements-wrapper">
                     <div className="menu-button-container">
-                        <button onClick={() => setSideBarMenuOpen(true)} className="menu-button">≡</button>
+                        <button onClick={() => setSideBarMenuOpen(true)} className="menu-button">
+                            <img src={burger_menu_icon} alt="menu"/>
+                        </button>
                     </div>
                     <div className="panel-name">
                         {props.name}

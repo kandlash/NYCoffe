@@ -17,11 +17,10 @@ const ProfileCentral = () => {
     return (
         <div className="profile-central-wrapper">
             <div className="profile-central-title-container">
-                {/* Передаем ссылку на функцию, чтобы она вызывалась только при клике */}
-                <div onClick={() => handleChangeContent(false)} className="profile-central-title">
+                <div onClick={() => handleChangeContent(false)} className={`profile-central-title ${isShedule ? '' : 'selected'}`}>
                     График
                 </div>
-                <div onClick={() => handleChangeContent(true)} className="profile-central-title">
+                <div onClick={() => handleChangeContent(true)} className={`profile-central-title ${isShedule ? 'selected' : ''}`}>
                     Заполнение графика
                 </div>
             </div>

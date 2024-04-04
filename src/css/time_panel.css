@@ -31,6 +31,11 @@
     font-weight: bold;
 }
 
+.menu-button img{
+    width: 25px;
+    height: 25px;
+}
+
 .nav-elements-wrapper .panel-name{
     font-size: 1.6rem;
     width: 150px;

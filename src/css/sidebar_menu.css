@@ -16,6 +16,7 @@
 }
 
 .sidebarmenu-elements{
+    position: relative;
     padding: 25px 15px;
     display: flex;
     flex-direction: column;
@@ -23,6 +24,41 @@
     justify-content: space-between;
     height: 300px;
     font-size: 1.5rem;
+    padding-top: 40px;
+}
+
+.smb-close-button{
+    position: absolute;
+    right: 0;  
+    top: 15px;
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.end-shift-container{
+    margin-top: 400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.end-shift-button{
+    width: 220px;
+    height: 25px;
+    padding: 25px 0px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 9px;
+    border: none;
+    background: var(--yellow);
+    cursor: pointer;
 }
 
 .sidebarmenu-elements a{
