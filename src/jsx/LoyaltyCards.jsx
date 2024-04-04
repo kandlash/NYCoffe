@@ -5,7 +5,7 @@ import LoayltyTable from "./LoayltyTable";
 const LoyaltyCards = () => {
     return(
         <div className="loyalty-cards-wrapper">
-            <WorkNavigation name="Карты" border={true}/>
+            <WorkNavigation name="База карт " border={true}/>
             <LoayltyTable/>
         </div>
     )

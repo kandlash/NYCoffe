@@ -90,3 +90,8 @@
     border-radius: 6px;
     color: white;   
 }
+
+.delete-client-button{
+    border: none;
+    background-color: transparent;
+}

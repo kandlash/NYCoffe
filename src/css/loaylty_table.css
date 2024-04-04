@@ -5,7 +5,8 @@
     background-position: center;
     height: 100vh;    
 }
-.loyalty-table-container{
+
+.loaylty-table-container{
     width: 100%;
     height: 600px;
     overflow-y: auto;
@@ -28,34 +29,72 @@
     background-image: linear-gradient(to right, transparent 3%, #016b36f2 3%, #016b36f2 97%, transparent 97%);
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    height: 300px;
+    height: auto;
+    max-height: 150px;
     font-size: 1.12rem;
 }
 
+.tdvisits-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .visit{
-    width: 10px;
-    height: 10px;
-    background-color: black;
-    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+}
+
+.visit-img{
+    width: 100%;
+    height: 100%;
+}
+
+.person-tr{
+    position: relative;
+}
+
+.delete-person-button{
+    position: absolute;
+    right: 15px;
+}
+
+.delete-person-button{
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border: none;
+    transition: all 0.15s;
+}
+
+.delete-person-button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.trash-icon-img{
+    width: 100%;
+    height: 100%;
 }
 
 /* Style the scrollbar */
-.loyalty-table-container::-webkit-scrollbar {
+.loaylty-table-container::-webkit-scrollbar {
     width: 8px;
 }
 
-.loyalty-table-container::-webkit-scrollbar-thumb {
+.loaylty-table-container::-webkit-scrollbar-thumb {
     background-color: #4C4C4C; /* Color of the scrollbar thumb */
     border-radius: 4px; /* Border radius of the scrollbar thumb */
 }
 
-.loyalty-table-container::-webkit-scrollbar-track {
+.loaylty-table-container::-webkit-scrollbar-track {
     background-color: #1E1E1E; /* Color of the scrollbar track */
     border-radius: 4px; /* Border radius of the scrollbar track */
 }
 
 /* Optional: Hide scrollbar in Firefox */
-.loyalty-table-container {
+.loaylty-table-container {
     scrollbar-width: thin;
     scrollbar-color: #4C4C4C #1E1E1E;
 }

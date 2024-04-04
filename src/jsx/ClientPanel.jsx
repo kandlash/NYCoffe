@@ -1,5 +1,6 @@
 import React from "react";
 import '../css/client.css'
+import trash_icon from "../images/trash_icon.svg";
 
 
 const ClientPanel = (props) => {
@@ -38,7 +39,9 @@ const ClientPanel = (props) => {
             <div className="chek-box-container"><input type="checkbox"></input></div>
             <div className="chek-box-container"></div>
             <div className="card-input-container"><input className="comment-input" type="text"></input></div>
-            <button onClick={handleRemove}>Удалить</button>
+            <button className="delete-client-button" onClick={handleRemove}>
+                <img src={trash_icon} alt="trash"/>
+            </button>
         </div>
     );
 };
