@@ -41,10 +41,10 @@
 
 .activation-input input{
     width: 350px;
-    height: 50px;
+    height: 35px;
     border: none;
     border-radius: 25px;
-    
+    padding-left: 10px;
     background-color: #07562E;
 }
 

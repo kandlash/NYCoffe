@@ -3,7 +3,7 @@ import ScheduleFilling from "./ScheduleFilling";
 import SheduleWatch from "./SheduleWatch";
 import "../css/profile-central.css";
 
-const ProfileCentral = () => {
+const ProfileCentral = ({ onSave }) => {
     const [isShedule, setShedule] = useState(true);
 
     const handleChangeContent = (flag) => {
@@ -25,7 +25,7 @@ const ProfileCentral = () => {
                 </div>
             </div>
             <div className="profile-central-main-container">
-                {isShedule && <ScheduleFilling />}
+                {isShedule && <ScheduleFilling onSave={onSave} />}
                 {!isShedule && <SheduleWatch />}
             </div>
         </div>

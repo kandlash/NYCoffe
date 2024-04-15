@@ -3,7 +3,7 @@ import moment from "moment";
 import left_arrow from "../images/left_arrow.svg";
 import right_arrow from "../images/right_arrow.svg";
 
-const ScheduleFilling = () => {
+const ScheduleFilling = ({ onSave }) => {
     // Состояние для хранения выбранных смен
     const [selectedShifts, setSelectedShifts] = useState({
         Monday: null,
@@ -14,6 +14,15 @@ const ScheduleFilling = () => {
         Saturday: null,
         Sunday: null
     });
+
+    const handleSave = () => {
+        // Здесь вы можете собрать данные о нажатии кнопки "Сохранить"
+        const data = {
+            text: "hello"
+        };
+        onSave(data); // Вызываем обратный вызов и передаём ему данныеж
+        console.log("Хэндл сейв " + data.text);
+    };
 
     // Функция для обновления выбранной смены
     const handleShiftChange = (day, shift) => {
@@ -77,6 +86,7 @@ const ScheduleFilling = () => {
             shifts: selectedShifts,    // Выбранные смены
         };
         console.log(dataToSend);
+        handleSave();
     
         //sendDataToBackend(dataToSend); // Отправляем данные на сервер
     };

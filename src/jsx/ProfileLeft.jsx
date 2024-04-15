@@ -7,7 +7,8 @@ const ProfileLeft = (props) =>{
     return(
         <div className="profile-left-wrapper">
             <ProfileLeftPersonal name={props.name} position={props.position}/>
-            <ProfileLeftHistory />
+            <ProfileLeftHistory notification={props.notification} />
+            {console.log("profile left " + props.notification)}
         </div>
     )
 }
