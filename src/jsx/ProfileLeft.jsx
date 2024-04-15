@@ -1,3 +1,4 @@
+// В ProfileLeft.js
 import React from "react";
 import ProfileLeftHistory from "./ProfileLeftHistory";
 import ProfileLeftPersonal from "./ProfileLeftPersonal";
@@ -7,7 +8,8 @@ const ProfileLeft = (props) =>{
     return(
         <div className="profile-left-wrapper">
             <ProfileLeftPersonal name={props.name} position={props.position}/>
-            <ProfileLeftHistory notification={props.notification} />
+            {/* Передаём текущее уведомление и список предыдущих уведомлений */}
+            <ProfileLeftHistory currentNotification={props.notification} previousNotifications={props.previousNotifications} />
             {console.log("profile left " + props.notification)}
         </div>
     )

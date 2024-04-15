@@ -18,10 +18,10 @@ const ScheduleFilling = ({ onSave }) => {
     const handleSave = () => {
         // Здесь вы можете собрать данные о нажатии кнопки "Сохранить"
         const data = {
-            text: "hello"
+            text: "Ваш график обновлен ",
+            date: formatCurrentWeek()
         };
         onSave(data); // Вызываем обратный вызов и передаём ему данныеж
-        console.log("Хэндл сейв " + data.text);
     };
 
     // Функция для обновления выбранной смены

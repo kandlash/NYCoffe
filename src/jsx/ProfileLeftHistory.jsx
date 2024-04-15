@@ -2,15 +2,26 @@
 import React from "react";
 
 const ProfileLeftHistory = (props) => {
-    // Проверяем, есть ли уведомление, и если есть, отображаем его текст
-    const notificationText = props.notification ? props.notification.text : null;
+    // Распаковываем текущее уведомление и список предыдущих уведомлений из props
+    const { currentNotification, previousNotifications } = props;
 
     return(
         <div className="profile-left-history-wrapper">
-            <div className="profile-left-history-element">
-                {/* Отображаем текст уведомления */}
-                {notificationText && <div className="notification-text">{notificationText}</div>}
-            </div>
+            {/* Отображаем текущее уведомление */}
+            {currentNotification && (
+                <div className="profile-left-history-element">
+                    <div className="notification-text">{currentNotification.text}</div>
+                    <div className="notification-text">{currentNotification.date}</div>
+                </div>
+            )}
+
+            {/* Отображаем предыдущие уведомления */}
+            {previousNotifications.map((notification, index) => (
+                <div key={index} className="profile-left-history-element">
+                    <div className="notification-text">{notification.text}</div>
+                    <div className="notification-text">{notification.date}</div>
+                </div>
+            ))}
         </div>
     );
 };

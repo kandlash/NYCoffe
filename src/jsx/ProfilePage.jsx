@@ -5,16 +5,17 @@ import ProfileCentral from "./ProfileCentral";
 import "../css/profile_page.css";
 
 const ProfilePage = () => {
-    const [notification, setNotification] = useState(null);
+    const [notifications, setNotifications] = useState([]);
 
     const handleSaveNotification = (data) => {
-        setNotification(data);
+        // Добавляем новое уведомление в начало списка
+        setNotifications([data, ...notifications]);
         console.log("set notification " + data.text)
     };
 
     return(
         <div className="profile-wrapper">
-            <ProfileLeft name="Челов Чел Челиков" position="бариста" notification={notification}></ProfileLeft>
+            <ProfileLeft name="Челов Чел Челиков" position="бариста" notification={notifications[0]} previousNotifications={notifications.slice(1)} />
             <ProfileCentral onSave={handleSaveNotification}></ProfileCentral>
         </div>
     );
