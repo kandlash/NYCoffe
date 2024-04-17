@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import "../css/orders_table.css";
+import { OrderContext } from './OrdersContext';
 
 // Компонент таблицы заказанных напитков
 const OrdersTable = ({ drinksData }) => {
+    const { orders } = useContext(OrderContext);
     const fakeDrinksData = [
         {
             name: "Латте",
@@ -11,300 +13,6 @@ const OrdersTable = ({ drinksData }) => {
             additions: ["1"],
             price: 120,
             comment: "присыпка"
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
-        }, {
-            name: "Кокаин",
-            volume: "Большой",
-            syrups: ["1"],
-            additions: ["2"],
-            price: 500,
-            comment: ""            
         }
     ];
 
@@ -333,21 +41,20 @@ const OrdersTable = ({ drinksData }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {fakeDrinksData.map((drink, index) => (
-                        <tr className='modtr' key={index}>
-                            <td>{drink.name}</td>
-                            <td>{drink.volume}</td>
-                            <td>{drink.syrups.join(', ')}</td>
-                            <td>{drink.additions.join(', ')}</td>
-                            <td>{drink.price}</td>
-                            <td><input type="text" value={comments[index]} onChange={(e) => handleCommentChange(index, e)} /></td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-
-    );
+            {orders.map((order, index) => (
+            <tr className='modtr' key={index}>
+              <td>{order.name}</td>
+              <td>{order.volume}</td>
+              <td>{order.syrups}</td>
+              <td>{order.additions}</td>
+              <td>{order.price}р.</td>
+              <td><input type="text" value={comments[index]} onChange={(e) => handleCommentChange(index, e)} /></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default OrdersTable;

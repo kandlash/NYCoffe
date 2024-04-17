@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../css/drink_to_cheque.css";
 import cofeimg from '../images/cofe-image.png';
 import arrow from '../images/arrow_back_FILL0_wght400_GRAD0_opsz24.svg'
 import { toast } from 'react-toastify';
+import { OrderContext } from "./OrdersContext";
+import { ToastWithLink, renderToast } from "./ToastWithLink";
 
 
 const DrinkToCheque = (props) => {
-
+    const { addOrder } = useContext(OrderContext);
     const [choisedValue, setChoisedValue] = useState("");
     const [syrupValue, setSyrupValue] = useState(0);
     const [extraForDrinkValue, setExtraForDrinkValue] = useState(0);
@@ -70,15 +72,32 @@ const DrinkToCheque = (props) => {
         console.log("Итоговая цена:", totalPriceWithAdditions);
     
         // Вызов toast-уведомления
-        toast.success(`Продан напиток ${props.drinkName} за ${totalPriceWithAdditions} руб.`, {
-            position: "bottom-right",
-            autoClose: 2500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+  // Вызов toast-уведомления с кастомным компонентом
+  // Вызов toast-уведомления с кастомным компонентом
+  const toastId = toast.success('', {
+    position: "bottom-right",
+    autoClose: 2500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+
+  // Обновление содержимого toast-уведомления
+  toast.update(toastId, {
+    render: () => (
+      <ToastWithLink drinkName={props.drinkName} price={totalPriceWithAdditions} />
+    ),
+  });
+        addOrder({
+            name: props.drinkName,
+            volume: choisedValue,
+            syrups: syrupValue,
+            additions: extraForDrinkValue,
+            price: totalPriceWithAdditions,
+            comment: ''
+          });
         props.closeCheque();
     };
 
