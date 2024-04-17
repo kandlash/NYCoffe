@@ -4,13 +4,19 @@ import trash_icon from "../images/trash_icon.svg";
 
 const ClientPanel = (props) => {
   const [price, setPrice] = useState(0);
-  const [cardNumber, setCardNumber] = useState("");
-  const [coupon, setCoupon] = useState("нет");
-  const [employeeCheckbox, setEmployeeCheckbox] = useState(false);
-  const [birthdayCheckbox, setBirthdayCheckbox] = useState(false);
+  const [cardNumber, setCardNumber] = useState(props.cardNumber);
+  const [coupon, setCoupon] = useState(props.coupon);
+  const [employeeCheckbox, setEmployeeCheckbox] = useState(props.employeeCheckbox);
+  const [birthdayCheckbox, setBirthdayCheckbox] = useState(props.birthdayCheckbox);
+  const [comment, setComment] = useState(props.comment || "");
 
   const handleRemove = () => {
     props.onRemove();
+  };
+
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+    props.onUpdate({ comment: e.target.value });
   };
 
   const calculatePrice = useCallback(() => {
@@ -50,6 +56,26 @@ const ClientPanel = (props) => {
     return () => clearTimeout(timer);
   }, [props.exit_time, calculatePrice]);
 
+  const handleCardNumberChange = (e) => {
+    setCardNumber(e.target.value);
+    props.onUpdate({ cardNumber: e.target.value });
+  };
+
+  const handleCouponChange = (e) => {
+    setCoupon(e.target.value);
+    props.onUpdate({ coupon: e.target.value });
+  };
+
+  const handleEmployeeCheckboxChange = () => {
+    setEmployeeCheckbox(!employeeCheckbox);
+    props.onUpdate({ employeeCheckbox: !employeeCheckbox });
+  };
+
+  const handleBirthdayCheckboxChange = () => {
+    setBirthdayCheckbox(!birthdayCheckbox);
+    props.onUpdate({ birthdayCheckbox: !birthdayCheckbox });
+  };
+
   return (
     <div className="client-container" style={props.style}>
       <div className="name-container">{props.name}</div>
@@ -64,23 +90,23 @@ const ClientPanel = (props) => {
         </>
       )}
       <div className="chek-box-container wider">
-        <input type="text" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)}></input>
+        <input type="text" value={cardNumber} onChange={handleCardNumberChange}></input>
       </div>
       <div className="chek-box-container">
-        <select value={coupon} onChange={(e) => setCoupon(e.target.value)}>
+        <select value={coupon} onChange={handleCouponChange}>
           <option>нет</option>
           <option>15 минут</option>
           <option>30 минут</option>
         </select>
       </div>
       <div className="chek-box-container">
-        <input type="checkbox" checked={employeeCheckbox} onChange={() => setEmployeeCheckbox(!employeeCheckbox)}></input>
+        <input type="checkbox" checked={employeeCheckbox} onChange={handleEmployeeCheckboxChange}></input>
       </div>
       <div className="chek-box-container">
-        <input type="checkbox" checked={birthdayCheckbox} onChange={() => setBirthdayCheckbox(!birthdayCheckbox)}></input>
+        <input type="checkbox" checked={birthdayCheckbox} onChange={handleBirthdayCheckboxChange}></input>
       </div>
       <div className="chek-box-container price-container">{price} руб.</div>
-      <div className="card-input-container"><input className="comment-input" type="text"></input></div>
+      <input className="comment-input" type="text" value={comment} onChange={handleCommentChange}></input>
       <button className="delete-client-button" onClick={handleRemove}>
         <img src={trash_icon} alt="trash"/>
       </button>

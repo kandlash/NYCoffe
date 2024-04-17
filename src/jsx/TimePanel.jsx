@@ -37,6 +37,12 @@ const TimePanel = () => {
     setClients((prevClients) => prevClients.filter((_, i) => i !== index));
   };
 
+  const handleClientUpdate = (index, updatedClient) => {
+    setClients((prevClients) =>
+      prevClients.map((client, i) => (i === index ? { ...client, ...updatedClient } : client))
+    );
+  };
+
   const filteredClients = clients.filter((client) =>
     client.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -62,8 +68,14 @@ const TimePanel = () => {
             arrival_time={client.arrival_time}
             exit_time={client.exit_time}
             isExit={client.isExit}
+            cardNumber={client.cardNumber || ""}
+            coupon={client.coupon || "нет"}
+            employeeCheckbox={client.employeeCheckbox || false}
+            birthdayCheckbox={client.birthdayCheckbox || false}
+            comment={client.comment || ""}
             onExit={() => handleClientExit(index)}
             onRemove={() => handleClientRemove(index)}
+            onUpdate={(updatedClient) => handleClientUpdate(index, updatedClient)}
             style={{backgroundColor: index % 2 === 0 ? '#016B36' : '#009B4D'}}
           />
         ))}
