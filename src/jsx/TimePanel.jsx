@@ -6,12 +6,10 @@ import "../css/time_panel.css";
 const TimePanel = () => {
   const initialClients = JSON.parse(localStorage.getItem("clients")) || [];
   const [clients, setClients] = useState(initialClients);
-  const [searchQuery, setSearchQuery] = useState(""); // Новое состояние для хранения значения поиска
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     localStorage.setItem("clients", JSON.stringify(clients));
-    // Удалите следующую строку, чтобы не очищать localStorage при каждом обновлении clients
-    // localStorage.clear();
   }, [clients]);
 
   const handleAddClient = (clientName) => {
@@ -39,7 +37,6 @@ const TimePanel = () => {
     setClients((prevClients) => prevClients.filter((_, i) => i !== index));
   };
 
-  // Функция для фильтрации клиентов по имени
   const filteredClients = clients.filter((client) =>
     client.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
