@@ -1,0 +1,14 @@
+.orderscash-wrapper{
+    width: 150px;  
+    height: 60px;  
+    background-color: #016B36;
+    color: white;
+    position: absolute;
+    right: 84px;
+    bottom: 0px;
+    text-align: center;
+}
+
+.orderscash-value{
+    font-size: 24px;
+}

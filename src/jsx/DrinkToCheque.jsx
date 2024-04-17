@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../css/drink_to_cheque.css";
 import cofeimg from '../images/cofe-image.png';
 import arrow from '../images/arrow_back_FILL0_wght400_GRAD0_opsz24.svg'
@@ -42,29 +42,33 @@ const DrinkToCheque = (props) => {
     const incrementSyrup = () => {
         if (syrupValue < 10) {
             setSyrupValue(syrupValue + 1);
+            updateAdditionsPrice(syrupValue + 1, extraForDrinkValue);
         }
-        updateAdditionsPrice(syrupValue + 1, extraForDrinkValue);
+        
     };
 
     const decrementSyrup = () => {
         if (syrupValue > 0) {
             setSyrupValue(syrupValue - 1);
+            updateAdditionsPrice(syrupValue - 1, extraForDrinkValue);
         }
-        updateAdditionsPrice(syrupValue - 1, extraForDrinkValue);
+        
     };
 
     const incrementExtras = () => {
         if (extraForDrinkValue < 10) {
             setExtraForDrinkValue(extraForDrinkValue + 1);
+            updateAdditionsPrice(syrupValue, extraForDrinkValue + 1);
         }
-        updateAdditionsPrice(syrupValue, extraForDrinkValue + 1);
+        
     };
 
     const decrementExtras = () => {
         if (extraForDrinkValue > 0) {
             setExtraForDrinkValue(extraForDrinkValue - 1);
+            updateAdditionsPrice(syrupValue, extraForDrinkValue - 1);
         }
-        updateAdditionsPrice(syrupValue, extraForDrinkValue - 1);
+        
     };
 
     const handleCreateClick = () => {
