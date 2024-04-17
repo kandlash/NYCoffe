@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ClientPanel from "./ClientPanel";
 import AddNewClientPanel from "./AddNewClientPanel";
 import "../css/time_panel.css";
+import { toast } from 'react-toastify';
 
 const TimePanel = () => {
   const initialClients = JSON.parse(localStorage.getItem("clients")) || [];
@@ -21,6 +22,16 @@ const TimePanel = () => {
       isExit: false,
     };
     setClients([...clients, newClient]);
+      // Вызов toast-уведомления
+      toast.success(`Добавлен гость ${clientName}`, {
+        position: "bottom-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
   };
 
   const handleClientExit = (index) => {
@@ -35,6 +46,15 @@ const TimePanel = () => {
 
   const handleClientRemove = (index) => {
     setClients((prevClients) => prevClients.filter((_, i) => i !== index));
+    toast.success(`Удален гость`, {
+      position: "bottom-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+  });
   };
 
   const handleClientUpdate = (index, updatedClient) => {

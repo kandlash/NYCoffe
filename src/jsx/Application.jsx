@@ -1,5 +1,7 @@
 import React from "react";
 import {Routes, Route} from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 import ActivationPage from "./ActivationPage";
 import AuthPage from "./AuthPage";
@@ -23,6 +25,7 @@ const Application = () =>{
                 <Route path="/loyaltycards" element={<LoyaltyCards/>}/>
                 <Route path="/admin" element={<AdminPage/>}/>
             </Routes>
+            <ToastContainer />
         </>
     )
 }

@@ -1,19 +1,39 @@
-// Ваш обновленный DrinkToCheque.jsx
 import React, { useState } from "react";
 import "../css/drink_to_cheque.css";
 import cofeimg from '../images/cofe-image.png';
 import arrow from '../images/arrow_back_FILL0_wght400_GRAD0_opsz24.svg'
+import { toast } from 'react-toastify';
+
 
 const DrinkToCheque = (props) => {
 
     const [choisedValue, setChoisedValue] = useState("");
     const [syrupValue, setSyrupValue] = useState(0);
     const [extraForDrinkValue, setExtraForDrinkValue] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(100); // Базовая цена напитка
 
     const [currentContent, setCurrentContent] = useState("drinkValue");
+    const [additionsPrice, setAdditionsPrice] = useState(0);
+
+    const updateTotalPrice = (drinkValue) =>{
+        if (drinkValue === "Большой") {
+            setTotalPrice(100 + 50); // Цена большого напитка
+        } else if (drinkValue === "Стандарт") {
+            setTotalPrice(100); // Цена стандартного напитка
+        }
+    }
+
+    const updateAdditionsPrice = (syrup, extras) =>{
+        const additionPriceConst = 2;
+        console.log("Updating additionsPrice");
+        console.log("---- syrop: " + syrup);
+        console.log("---- extras: " + extras);
+        setAdditionsPrice(additionPriceConst * (syrup + extras));
+    }
 
     const handleChangeContent = (drinkValue) => {
         setChoisedValue(drinkValue);
+        updateTotalPrice(drinkValue);
         setCurrentContent("extrasForDrink");
     }
 
@@ -21,24 +41,45 @@ const DrinkToCheque = (props) => {
         if (syrupValue < 10) {
             setSyrupValue(syrupValue + 1);
         }
+        updateAdditionsPrice(syrupValue + 1, extraForDrinkValue);
     };
 
     const decrementSyrup = () => {
         if (syrupValue > 0) {
             setSyrupValue(syrupValue - 1);
         }
+        updateAdditionsPrice(syrupValue - 1, extraForDrinkValue);
     };
 
     const incrementExtras = () => {
         if (extraForDrinkValue < 10) {
             setExtraForDrinkValue(extraForDrinkValue + 1);
         }
+        updateAdditionsPrice(syrupValue, extraForDrinkValue + 1);
     };
 
     const decrementExtras = () => {
         if (extraForDrinkValue > 0) {
             setExtraForDrinkValue(extraForDrinkValue - 1);
         }
+        updateAdditionsPrice(syrupValue, extraForDrinkValue - 1);
+    };
+
+    const handleCreateClick = () => {
+        const totalPriceWithAdditions = totalPrice + additionsPrice;
+        console.log("Итоговая цена:", totalPriceWithAdditions);
+    
+        // Вызов toast-уведомления
+        toast.success(`Продан напиток ${props.drinkName} за ${totalPriceWithAdditions} руб.`, {
+            position: "bottom-right",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+        props.closeCheque();
     };
 
     return (
@@ -67,13 +108,13 @@ const DrinkToCheque = (props) => {
                                 Сироп
                             </div>
                             <div className="drink-to-cheque-extra-for-drink-buttons">
-                                <button onClick={incrementSyrup} className="drink-to-cheque-extra-for-drink-button">
+                                <button onClick={incrementSyrup} className="drink-to-cheque-extra-for-drink-button incsyrop">
                                     +
                                 </button>
                                 <div className="drink-to-cheque-extra-for-drink-value">
                                     {syrupValue}
                                 </div>
-                                <button onClick={decrementSyrup} className="drink-to-cheque-extra-for-drink-button">
+                                <button onClick={decrementSyrup} className="drink-to-cheque-extra-for-drink-button decsyrop">
                                     -
                                 </button>
                             </div>
@@ -83,13 +124,13 @@ const DrinkToCheque = (props) => {
                                 Добавки
                             </div>
                             <div className="drink-to-cheque-extra-for-drink-buttons">
-                                <button onClick={incrementExtras} className="drink-to-cheque-extra-for-drink-button">
+                                <button onClick={incrementExtras} className="drink-to-cheque-extra-for-drink-button incextra">
                                     +
                                 </button>
                                 <div className="drink-to-cheque-extra-for-drink-value">
                                     {extraForDrinkValue}
                                 </div>
-                                <button onClick={decrementExtras} className="drink-to-cheque-extra-for-drink-button">
+                                <button onClick={decrementExtras} className="drink-to-cheque-extra-for-drink-button decextra">
                                     -
                                 </button>
                             </div>
@@ -100,8 +141,8 @@ const DrinkToCheque = (props) => {
             <button onClick={() => setCurrentContent("drinkValue")} className={"navigation-button" + (currentContent === "drinkValue" ? " " : " visible")}>
                 <img alt="back-arrow" src={arrow}></img>
             </button>
-            <button onClick={() => setCurrentContent("drinkValue")} className={"create-button" + (currentContent === "drinkValue" ? " " : " visible")}>
-                Создать
+            <button onClick={handleCreateClick} className={"create-button" + (currentContent === "drinkValue" ? " " : " visible")}>
+                Продать {totalPrice + additionsPrice}р.
             </button>
             <button className="close-button" onClick={() => props.closeCheque()}>X</button>
         </div>
