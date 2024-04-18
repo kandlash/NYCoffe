@@ -8,7 +8,6 @@ import { TotalProvider } from "./TotalContext";
 const Orders = () => {
     const location = useLocation();
     const isAdmin = location.state?.isAdmin || false;
-    console.log("isAdmin: " + isAdmin);
     return(
         <div className="orders-wrapper">
             <WorkNavigation name="База заказов" border={true} isAdmin={isAdmin}/>

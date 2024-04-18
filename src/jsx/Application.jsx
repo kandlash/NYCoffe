@@ -11,6 +11,7 @@ import ProfilePage from "./ProfilePage";
 import Orders from "./Orders";
 import LoyaltyCards from "./LoyaltyCards";
 import AdminPage from "./AdminPage";
+import RegistrationPage from "./RegistrationPage";
 
 const Application = () =>{
     return(
@@ -24,6 +25,7 @@ const Application = () =>{
                 <Route path="/orders" element={<Orders/>}/>
                 <Route path="/loyaltycards" element={<LoyaltyCards/>}/>
                 <Route path="/admin" element={<AdminPage/>}/>
+                <Route path="/reg" element={<RegistrationPage/>}/>
             </Routes>
             <ToastContainer />
         </>

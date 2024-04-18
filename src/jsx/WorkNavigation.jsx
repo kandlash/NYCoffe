@@ -23,7 +23,6 @@ const WorkNavigation = (props) => {
                     </div>
                 </div>
             </div>
-            {console.log(props.isAdmin)}
             {sideBarMenuOpen && <WorkSideBarMenu isAdmin={props.isAdmin} onCloseClick={handleClose}/>}
         </>
     )

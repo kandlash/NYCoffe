@@ -33,7 +33,7 @@ const WorkSideBarMenu = ({ onCloseClick }) => {
                                     </div>
                                 </Link>
                                 <Link to={{
-                                    pathname: "/registrate",
+                                    pathname: "/reg",
                                     state: { isAdmin: isAdmin }
                                 }}>
                                     <div className="sbm-element">
