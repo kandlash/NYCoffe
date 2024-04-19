@@ -6,12 +6,18 @@ import { Link } from "react-router-dom";
 import AuthContext from "./AuthContext";
 
 const ProfileLeftPersonal = (props) =>{
-    const { isAdmin, logout } = useContext(AuthContext);
+    const { isAdmin, logout, isEmploye, logoutAsEmp } = useContext(AuthContext);
 
     return(
         <div className="profile-personal-container">
-            {isAdmin ? (<Link onClick={logout} to="/"><img className="logout-icon-img" src={logout_icon} alt="logout" /></Link>)
-            :(<Link to="/"><img className="logout-icon-img" src={logout_icon} alt="logout" /></Link>)
+            {isAdmin &&
+            <Link onClick={logout} to="/">
+                <img className="logout-icon-img" src={logout_icon} alt="logout" />
+            </Link>}
+            {isEmploye && 
+                <Link onClick={logoutAsEmp} to="/">
+                    <img className="logout-icon-img" src={logout_icon} alt="logout" />
+                </Link>
             }
             
             <div className="profile-img-container">

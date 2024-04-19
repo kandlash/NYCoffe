@@ -1,11 +1,25 @@
 // В ProfilePage.js
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProfileLeft from "./ProfileLeft";
 import ProfileCentral from "./ProfileCentral";
 import "../css/profile_page.css";
+import AuthContext from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
     const [notifications, setNotifications] = useState([]);
+    const { isAdmin, isEmploye, isWorker } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isAdmin && !isWorker && !isEmploye) {
+            navigate("/");
+        } else if (isWorker) {
+            navigate("/work");
+        } else if (isAdmin) {
+            navigate("/admin");
+        }
+    }, [isAdmin, isWorker, isEmploye, navigate]);
 
     const handleSaveNotification = (data) => {
         // Добавляем новое уведомление в начало списка
@@ -13,11 +27,17 @@ const ProfilePage = () => {
         console.log("set notification " + data.text)
     };
 
-    return(
-        <div className="profile-wrapper">
-            <ProfileLeft name="Челов Чел Челиков" position="бариста" notification={notifications[0]} previousNotifications={notifications.slice(1)} />
-            <ProfileCentral onSave={handleSaveNotification}></ProfileCentral>
-        </div>
+    return (
+        <>
+            {isEmploye &&
+                <div className="profile-wrapper">
+                    <ProfileLeft name="Челов Чел Челиков" position="бариста" notification={notifications[0]} previousNotifications={notifications.slice(1)} />
+                    <ProfileCentral onSave={handleSaveNotification}></ProfileCentral>
+                </div>
+            }
+        </>
+
+
     );
 };
 

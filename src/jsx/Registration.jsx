@@ -13,10 +13,10 @@ const Registration = () => {
                     </div>
                 </div>
                 <div className="auth-wrapper">
-                    <div className="auth-input">
+                    <div className="reg-input">
                         <input  type="text" placeholder="Номер телефона или Email" />
                     </div>
-                    <div className="auth-input">
+                    <div className="reg-input">
                         <input  type="password" placeholder="Пароль" />
                     </div>
                     <div className="auth-button admin">

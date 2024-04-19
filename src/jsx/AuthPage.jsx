@@ -1,88 +1,139 @@
-import React, { useEffect, useState, useContext} from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import '../css/authpanel.css'
 import AuthContext from "./AuthContext";
 
-const AuthPage = ({onButtonClick}) => {
+const AuthPage = ({ onButtonClick }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isAdminEmail, setIsAdminEmail] = useState(false);
     const [isAdminPassword, setIsAdminPassword] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
-    const { login } = useContext(AuthContext);
+    const [isEmployeEmail, setIsEmployeEmail] = useState(false);
+    const [isEmployePassword, setIsEmployePassword] = useState(false);
+    const [isEmploye2, setIsEmploye] = useState(false);
+    const [isAdmin2, setIsAdmin] = useState(false);
+    const { login, loginAsEmp } = useContext(AuthContext);
+    const [isCorrect, setIsCorrect] = useState(true);
 
-    const handleClick = () =>{
-        console.log("set isAdmin");
-        login();
+    const { isAdmin, isEmploye, isWorker } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAdmin) {
+            navigate("/admin");
+        } else if (isWorker) {
+            navigate("/work");
+        } else if (isEmploye) {
+            navigate("/profile");
+        }
+    }, [isAdmin, isWorker, isEmploye, navigate]);
+
+
+
+    const handleClick = () => {
+        if (isEmploye2) {
+            loginAsEmp();
+            setIsCorrect(true);
+        } else if (isAdmin2) {
+            login();
+            setIsCorrect(true);
+        }
+        else{
+            console.log('not correct!');
+            setIsCorrect(false);
+        }
+
     }
 
-    const handleEmailChange = (e) =>{
+    const handleEmailChange = (e) => {
+        setIsCorrect(true);
         setEmail(e.target.value);
-        if(e.target.value === "admin"){
+        if (e.target.value === "admin") {
             setIsAdminEmail(true);
         }
-        else{
+        else if (e.target.value === "test@mail.ru") {
+            setIsEmployeEmail(true);
+        }
+        else {
+            setIsEmployeEmail(false);
             setIsAdminEmail(false);
         }
-        console.log(isAdminEmail + " pin " + isAdminPassword);
     }
 
-    const handlePasswordChange = (e) =>{
+    const handlePasswordChange = (e) => {
+        setIsCorrect(true);
         setPassword(e.target.value);
-        if(e.target.value === "admin"){
+        if (e.target.value === "admin") {
             setIsAdminPassword(true);
         }
-        else{
+        else if (e.target.value === "testpass") {
+            setIsEmployePassword(true);
+        }
+        else {
+            setIsEmployePassword(false);
             setIsAdminPassword(false);
         }
-        console.log(isAdminEmail + " pon " + isAdminPassword);
     }
 
-    useEffect( () =>{
-        if(isAdminEmail && isAdminPassword){
+    useEffect(() => {
+        if (isAdminEmail && isAdminPassword) {
             setIsAdmin(true);
-            console.log(isAdminEmail + " " + isAdminPassword);
         }
-        else{
+        else if (isEmployeEmail && isEmployePassword) {
+            setIsEmploye(true);
+        }
+        else {
+            setIsEmploye(false);
             setIsAdmin(false);
         }
-    },[isAdminEmail, isAdminPassword])
+    }, [isAdminEmail, isAdminPassword, isEmployeEmail, isEmployePassword])
 
     return (
-        <div className="AuthPanelWrapper">
-            <div className="auth-panel">
-                <div className="auth-current-panel-title-container">
-                    <div className="auth-current-panel-title">
-                        Авторизация
-                    </div>
-                </div>
-                    <div className="auth-wrapper">
-                        <div className="auth-input">
-                            <input value={email} onChange={handleEmailChange} type="text" placeholder="Номер телефона или Email" />
-                        </div>
-                        <div className="auth-input">
-                            <input value={password} onChange={handlePasswordChange} type="password" placeholder="Пароль" />
-                        </div>
-
-                        {isAdmin ? (
-                            <Link onClick={handleClick} to="/admin">
-                                <div className="auth-button admin">
-                                    <button  className="login-button">Войти</button>
+        <>
+            {!isAdmin && !isEmploye && !isWorker &&
+                <>
+                    <div className="AuthPanelWrapper">
+                        <div className="auth-panel">
+                            <div className="auth-current-panel-title-container">
+                                <div className="auth-current-panel-title">
+                                    Авторизация
                                 </div>
-                            </Link>
-                        )
-                        :
-                        (
-                            <Link to="/profile">
-                                <div className="auth-button nonadmin">
-                                    <button className="login-button">Войти</button>
+                            </div>
+                            <div className="auth-wrapper">
+                                <div className="auth-input">
+                                    <input className={`auth-input-in ${isCorrect ? '' : 'not-correct-input'}`} value={email} onChange={handleEmailChange} type="text" placeholder="Номер телефона или Email" />
                                 </div>
-                            </Link>
-                        )}
-                    </div>
+                                <div className="auth-input">
+                                    <input className={`auth-input-in ${isCorrect ? '' : 'not-correct-input'}`} value={password} onChange={handlePasswordChange} type="password" placeholder="Пароль" />
+                                </div>
 
-            </div>
-        </div>
+                                {isAdmin2 &&
+                                    <Link onClick={handleClick} to="/admin">
+                                        <div className="auth-button admin">
+                                            <button className="login-button">Войти</button>
+                                        </div>
+                                    </Link>
+                                }
+                                {isEmploye2 &&
+                                    <Link onClick={handleClick} to="/profile">
+                                        <div className="auth-button nonadmin">
+                                            <button className="login-button">Войти</button>
+                                        </div>
+                                    </Link>}
+                                {!isEmploye2 && !isAdmin2 &&
+                                        <div onClick={handleClick} className="auth-button nonadmin">
+                                            <button className="login-button">Войти</button>
+                                        </div>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </>
+            }
+        </>
+
+
     )
 }
 
