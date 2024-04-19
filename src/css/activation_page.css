@@ -42,11 +42,13 @@
 .activation-input input{
     width: 350px;
     height: 35px;
-    border: none;
+    border: 1px solid transparent;
     border-radius: 25px;
     padding-left: 10px;
     background-color: #07562E;
 }
+
+
 
 .activation-input input::placeholder{
     color: rgba(255, 255, 255, 0.623);
@@ -99,4 +101,8 @@
     text-decoration: none; /* Убираем стандартное подчеркивание */
     border-bottom: 1px solid white; /* Создаем подчеркивание */
     padding-bottom: 2px; /* Расстояние между текстом и подчеркиванием */
+}
+
+.not-activation-input input{
+    border-color: red;
 }

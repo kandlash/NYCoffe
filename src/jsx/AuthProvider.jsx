@@ -11,6 +11,9 @@ const AuthProvider = ({ children }) => {
   const [isWorker, setIsWorker] = useState(
     localStorage.getItem("isWorker") === "true");
 
+  const [isActivated, setIsActivated] = useState(
+    localStorage.getItem("isActivated") === "true");
+
   const login = () => {
     localStorage.setItem("isAdmin", true);
     console.log("setted admin true");
@@ -43,11 +46,22 @@ const AuthProvider = ({ children }) => {
     setIsWorker(false);
   }
 
+  const activate = () => {
+    localStorage.setItem("isActivated", true);
+    setIsActivated(true);
+  }
+
+  const deActivate = () => {
+    localStorage.setItem("isActivated", false);
+    setIsActivated(false);
+  }
+
 
   return (
     <AuthContext.Provider value={{ isAdmin, login, logout,
                                    isEmploye, loginAsEmp, logoutAsEmp,
-                                   isWorker, loginAsWorker, logoutAsWorker }}>
+                                   isWorker, loginAsWorker, logoutAsWorker,
+                                   isActivated, activate, deActivate }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,14 +1,26 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import '../css/authpanel.css'
 import AuthContext from "./AuthContext";
 
-const AuthToWorkPage = ({onButtonClick}) => {
+const AuthToWorkPage = () => {
 
-    const {loginAsWorker} = useContext(AuthContext);
-    const handleClick = () =>{
-        onButtonClick();
-    }
+    const {loginAsWorker, deActivate, isActivated, isAdmin, isWorker, isEmploye} = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAdmin) {
+            navigate("/admin");
+        } else if (isWorker) {
+            navigate("/work");
+        } else if (isEmploye) {
+            navigate("/profile");
+        }
+        else if(!isActivated){
+            navigate("/");
+        }
+    }, [isActivated, isAdmin, isWorker, isEmploye, navigate]);
 
     return (
         <div className="AuthPanelWrapper">
@@ -25,10 +37,11 @@ const AuthToWorkPage = ({onButtonClick}) => {
                         <div className="auth-input">
                             <input className="auth-input-in" type="password" placeholder="Пароль" />
                         </div>
-                        <div className="auth-button">
+                        <div className="auth-button-container-">
                             <Link onClick={loginAsWorker} to="/work">
                                 <button className="login-button">Начать смену</button>
                             </Link>
+                            <button onClick={deActivate} className="login-button">Деактивировать</button>
                         </div>
                     </div>
 
