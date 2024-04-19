@@ -107,6 +107,12 @@ const AuthPage = ({ onButtonClick }) => {
                                     <input className={`auth-input-in ${isCorrect ? '' : 'not-correct-input'}`} value={password} onChange={handlePasswordChange} type="password" placeholder="Пароль" />
                                 </div>
 
+                                {!isCorrect && 
+                                    <div className="not-correct-auth-text">
+                                        Не верный логин или пароль. Попробуйте еще раз.
+                                    </div>
+                                }
+
                                 {isAdmin2 &&
                                     <Link onClick={handleClick} to="/admin">
                                         <div className="auth-button admin">

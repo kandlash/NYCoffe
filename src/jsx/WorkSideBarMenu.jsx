@@ -9,7 +9,7 @@ import coffee_icon from '../images/coffee_icon.svg';
 import AuthContext from "./AuthContext";
 
 const WorkSideBarMenu = ({ onCloseClick }) => {
-    const { isAdmin } = useContext(AuthContext);
+    const { isAdmin, logoutAsWorker } = useContext(AuthContext);
     const handleClick = () => {
         onCloseClick();
     }
@@ -83,7 +83,7 @@ const WorkSideBarMenu = ({ onCloseClick }) => {
                                     </div>
                                 </Link>
                                 <div className="end-shift-container">
-                                    <Link to="/authtowork">
+                                    <Link onClick={logoutAsWorker} to="/authtowork">
                                         <button className="end-shift-button">
                                             Закончить смену
                                         </button>

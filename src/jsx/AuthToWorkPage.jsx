@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import '../css/authpanel.css'
+import AuthContext from "./AuthContext";
 
 const AuthToWorkPage = ({onButtonClick}) => {
 
+    const {loginAsWorker} = useContext(AuthContext);
     const handleClick = () =>{
         onButtonClick();
     }
@@ -18,13 +20,13 @@ const AuthToWorkPage = ({onButtonClick}) => {
                 </div>
                     <div className="auth-wrapper">
                         <div className="auth-input">
-                            <input type="text" placeholder="Номер телефона или Email" />
+                            <input className="auth-input-in" type="text" placeholder="Номер телефона или Email" />
                         </div>
                         <div className="auth-input">
-                            <input type="password" placeholder="Пароль" />
+                            <input className="auth-input-in" type="password" placeholder="Пароль" />
                         </div>
                         <div className="auth-button">
-                            <Link to="/work">
+                            <Link onClick={loginAsWorker} to="/work">
                                 <button className="login-button">Начать смену</button>
                             </Link>
                         </div>
