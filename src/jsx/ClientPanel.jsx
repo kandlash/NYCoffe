@@ -9,6 +9,19 @@ const ClientPanel = (props) => {
   const [employeeCheckbox, setEmployeeCheckbox] = useState(props.employeeCheckbox);
   const [birthdayCheckbox, setBirthdayCheckbox] = useState(props.birthdayCheckbox);
   const [comment, setComment] = useState(props.comment || "");
+  const [cards, setCards] = useState([]); // Добавляем состояние для хранения списка карт
+  const [showCards, setShowCards] = useState(false); // Добавляем состояние для отслеживания видимости окна с картами
+
+  useEffect(() => {
+    // Загружаем карты из локального хранилища при монтировании компонента
+    // const storedCards = JSON.parse(localStorage.getItem("cards")) || [];
+    const storedCards = [
+      {card: "0001", name: "Горилов Горилла Гориллович"},
+      {card: "0003", name: "Макаков Макак Макакивич"},
+      {card: "0002", name: "Пармезанов Пармезан Пармезанович"},
+    ]
+    setCards(storedCards);
+  }, []);
 
   const handleRemove = () => {
     props.onRemove();
@@ -58,6 +71,7 @@ const ClientPanel = (props) => {
 
   const handleCardNumberChange = (e) => {
     setCardNumber(e.target.value);
+    setShowCards(!!e.target.value); // Отображаем окно с картами только если input не пустой
     props.onUpdate({ cardNumber: e.target.value });
   };
 
@@ -76,6 +90,12 @@ const ClientPanel = (props) => {
     props.onUpdate({ birthdayCheckbox: !birthdayCheckbox });
   };
 
+  const handleCardSelect = (card) => {
+    setCardNumber(card.card);
+    setShowCards(false); // Скрываем окно с картами при выборе карты
+    props.onUpdate({ cardNumber: card.card });
+  };
+
   return (
     <div className="client-container" style={props.style}>
       <div className="name-container">{props.name}</div>
@@ -91,6 +111,17 @@ const ClientPanel = (props) => {
       )}
       <div className="chek-box-container wider">
         <input type="text" value={cardNumber} onChange={handleCardNumberChange}></input>
+        {showCards && (
+          <div className="card-list">
+            {cards
+              .filter((card) => card.card.startsWith(cardNumber)) // Фильтруем карты по номеру
+              .map((card) => (
+                <div className="card-item" key={card.card} onClick={() => handleCardSelect(card)}>
+                  {card.card} <br></br>{card.name}
+                </div>
+              ))}
+          </div>
+        )}
       </div>
       <div className="chek-box-container">
         <select value={coupon} onChange={handleCouponChange}>
