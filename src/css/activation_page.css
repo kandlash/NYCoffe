@@ -20,6 +20,8 @@
 
     width: 800px;
     height: 500px;
+
+    position: relative;
 }
 
 .activation-panel-title{
@@ -48,7 +50,12 @@
     background-color: #07562E;
 }
 
-
+.not-correct-activation-text-container{
+    position: absolute;
+    top: 50%;
+    color: red;
+    font-weight: bold;
+}
 
 .activation-input input::placeholder{
     color: rgba(255, 255, 255, 0.623);

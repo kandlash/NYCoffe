@@ -19,6 +19,16 @@
     color: white;
 }
 
-select{
-    width: 50px;
+.admin-page-elements-container select{
+    width: 55px;
+    height: 25px;
+
+    font-size: 1rem;
+    text-align: center;
+    color: black;
+    border-radius: 5px;
+    background-color: #FFC53E;
+    border: none;
+    cursor: pointer;
+
 }

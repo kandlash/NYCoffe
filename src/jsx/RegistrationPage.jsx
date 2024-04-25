@@ -8,7 +8,7 @@ const RegistrationPage = () => {
     const isAdmin = location.state?.isAdmin || false;
     return(
         <>
-            <WorkNavigation name="Регистрация" isAdmin={isAdmin}></WorkNavigation>
+            <WorkNavigation border={true} name="Регистрация" isAdmin={isAdmin}></WorkNavigation>
             <Registration></Registration>
         </>
     )

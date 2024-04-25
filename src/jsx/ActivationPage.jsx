@@ -60,6 +60,9 @@ const ActivationPage = ({ onButtonClick }) => {
                                     <input onChange={handlePasswordChange} type="password" placeholder="Введите ключ активации" />
                                 </div>
                             </div>
+                            <div className="not-correct-activation-text-container">
+                                {!isCorrectCode && <p>Не верный код активации</p>}
+                            </div>
                             <div className="activation-activate-or-skip-container">
                                 <div className="activation-button-container">
                                     {isCorrect ? (

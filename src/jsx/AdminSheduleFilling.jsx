@@ -147,7 +147,7 @@ const AdminSheduleFilling = ({ onSave }) => {
                 <th>Сб</th>
                 <th>Вс</th>
               </tr>
-            </thead>
+          </thead>
             <tbody>
               {[1, 2, 3].map((shift) => (
                 <tr key={shift}>
@@ -155,7 +155,6 @@ const AdminSheduleFilling = ({ onSave }) => {
                   {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
                     <td key={`${day}-${shift}`}>
                       <select onChange={(event) => handleSelectChange(event, day, shift)}>
-                        <option value="">Выберите сотрудника</option>
                         {backData && backData.map((employee, index) => {
                           if (employee.day === day && employee.shift === shift) {
                             return <option key={`${employee.id}-${day}-${shift}-${index}`}>{employee.employe_name}</option>;
