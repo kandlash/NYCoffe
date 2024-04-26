@@ -1,46 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import moment from "moment";
 import left_arrow from "../images/left_arrow.svg";
 import right_arrow from "../images/right_arrow.svg";
-
+import AuthContext from "./AuthContext";
 
 const ScheduleWatch = () => {
     const [scheduleData, setScheduleData] = useState(null); // Состояние для хранения данных с бэкенда
+    const { weeks } = useContext(AuthContext);
+    const [currentWeek, setCurrentWeek] = useState(moment().startOf('isoWeek'));
+    
+
+    const getWeek = () => {
+        const weekNumber = formatCurrentWeek();
+        const weekData = weeks.find(week => week.week === weekNumber);
+        console.log(weekData);
+        setScheduleData(weekData);
+    }
 
     useEffect(() => {
-        // Ваша функция для получения данных с бэкенда
-        const fetchData = async () => {
-            // try {
-            //     // Здесь должен быть ваш запрос на бэкенд для получения данных
-            //     // Например, используя fetch или axios
-            //     const response = await fetch('http://example.com/api/data');
-            //     const data = await response.json();
-            //     setScheduleData(data); // Устанавливаем полученные данные в состояние
-            // } catch (error) {
-            // console.error('Error fetching data:', error);
-            setScheduleData({
-                "week": "18.03.2024-24.03.2024",
-                "shifts": {
-                    "Monday": 1,
-                    "Tuesday": 2,
-                    "Wednesday": 2,
-                    "Thursday": 1,
-                    "Friday": 2,
-                    "Saturday": 3,
-                    "Sunday": 1
-                }
-            })
-        };
-
-        fetchData(); // Вызываем функцию получения данных при монтировании компонента
+        getWeek();
     }, []); // Пустой массив зависимостей означает, что эффект выполняется только один раз при монтировании компонента
     // Состояние для хранения текущей отображаемой недели
-    const [currentWeek, setCurrentWeek] = useState(moment().startOf('isoWeek'));
+
+    useEffect(()=> {
+        getWeek();
+    }, [currentWeek]);
+    
 
     // Функция для переключения на предыдущую неделю
     const goToPreviousWeek = () => {
         // setSelectedShifts({}); // Очищаем выбранные смены
         setCurrentWeek(prevWeek => prevWeek.clone().subtract(1, 'week'));
+        
     };
 
     // Функция для переключения на следующую неделю

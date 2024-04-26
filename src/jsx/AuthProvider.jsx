@@ -3,7 +3,7 @@ import AuthContext from "./AuthContext";
 
 const AuthProvider = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(
-      localStorage.getItem("isAdmin") === "true");
+    localStorage.getItem("isAdmin") === "true");
 
   const [isEmploye, setIsEmploye] = useState(
     localStorage.getItem("isEmploye") === "true");
@@ -13,6 +13,26 @@ const AuthProvider = ({ children }) => {
 
   const [isActivated, setIsActivated] = useState(
     localStorage.getItem("isActivated") === "true");
+
+  const [weeks, setWeeks] = useState(
+    // 
+    JSON.parse(localStorage.getItem("weeks")) || []
+  );
+
+  const updateWeeks = (index, newWeek) =>{
+    const updatedWeeks = [...weeks];
+    updatedWeeks[index] = newWeek;
+    setWeeks(updatedWeeks);
+    localStorage.setItem("weeks", JSON.stringify(updatedWeeks));
+  }
+
+  const addWeeks = (newWeeks) => {
+    const updatedWeeks = [...weeks, newWeeks];
+    setWeeks(updatedWeeks);
+    localStorage.setItem("weeks", JSON.stringify(updatedWeeks));
+  }
+  
+
 
   const login = () => {
     localStorage.setItem("isAdmin", true);
@@ -26,22 +46,22 @@ const AuthProvider = ({ children }) => {
     console.log("logout");
   };
 
-  const loginAsEmp = () =>{
+  const loginAsEmp = () => {
     localStorage.setItem("isEmploye", true);
     setIsEmploye(true);
   }
 
-  const logoutAsEmp = () =>{
+  const logoutAsEmp = () => {
     localStorage.setItem("isEmploye", false);
     setIsEmploye(false);
   }
 
-  const loginAsWorker = () =>{
+  const loginAsWorker = () => {
     localStorage.setItem("isWorker", true);
     setIsWorker(true);
   }
 
-  const logoutAsWorker = () =>{
+  const logoutAsWorker = () => {
     localStorage.setItem("isWorker", false);
     setIsWorker(false);
   }
@@ -58,10 +78,13 @@ const AuthProvider = ({ children }) => {
 
 
   return (
-    <AuthContext.Provider value={{ isAdmin, login, logout,
-                                   isEmploye, loginAsEmp, logoutAsEmp,
-                                   isWorker, loginAsWorker, logoutAsWorker,
-                                   isActivated, activate, deActivate }}>
+    <AuthContext.Provider value={{
+      isAdmin, login, logout,
+      isEmploye, loginAsEmp, logoutAsEmp,
+      isWorker, loginAsWorker, logoutAsWorker,
+      isActivated, activate, deActivate,
+      weeks, addWeeks, updateWeeks
+    }}>
       {children}
     </AuthContext.Provider>
   );

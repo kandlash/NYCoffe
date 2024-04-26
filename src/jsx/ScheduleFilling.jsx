@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import moment from "moment";
 import left_arrow from "../images/left_arrow.svg";
 import right_arrow from "../images/right_arrow.svg";
+import AuthContext from "./AuthContext";
 
 const ScheduleFilling = ({ onSave }) => {
     // Состояние для хранения выбранных смен
@@ -14,6 +15,8 @@ const ScheduleFilling = ({ onSave }) => {
         Saturday: null,
         Sunday: null
     });
+
+    const [isWeekExists, setIsWeekExists] = useState(false);
 
     const handleSave = () => {
         // Здесь вы можете собрать данные о нажатии кнопки "Сохранить"
@@ -80,13 +83,43 @@ const ScheduleFilling = ({ onSave }) => {
         });
     };
 
+    const { addWeeks, weeks, updateWeeks } = useContext(AuthContext);
+
+    useEffect(()=>{
+        getWeek();
+    }, [])
+
+    useEffect(()=>{
+        getWeek();
+    }, [currentWeek])
+
+    const getWeek = () => {
+        const weekNumber = formatCurrentWeek();
+        const weekData = weeks.find(week => week.week === weekNumber);
+        if(weekData){
+            setIsWeekExists(true);
+        }
+        else{
+            setIsWeekExists(false);
+        }
+    }
+
     const handleSendData = () => {
         const dataToSend = {
             week: formatCurrentWeek(), // Форматируем текущую неделю
             shifts: selectedShifts,    // Выбранные смены
         };
         console.log(dataToSend);
-        handleSave();
+        if(!isWeekExists){
+            addWeeks(dataToSend);
+            handleSave();
+        }
+        else{
+            const weekIndex = weeks.findIndex(week => week.week === dataToSend.week);
+            updateWeeks(weekIndex, dataToSend);
+            handleSave();
+        }
+
     
         //sendDataToBackend(dataToSend); // Отправляем данные на сервер
     };
@@ -151,7 +184,9 @@ const ScheduleFilling = ({ onSave }) => {
                 </button>
             </div>
             <div className="shedule-filling-week-save">
-                <button onClick={handleSendData}>Сохранить</button>
+                {isWeekExists && <button onClick={handleSendData}>Редактировать</button>}
+                {!isWeekExists && <button onClick={handleSendData}>Сохранить</button>}
+                
             </div>
         </div>
     )
