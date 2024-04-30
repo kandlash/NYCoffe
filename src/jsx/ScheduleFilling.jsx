@@ -4,7 +4,7 @@ import left_arrow from "../images/left_arrow.svg";
 import right_arrow from "../images/right_arrow.svg";
 import AuthContext from "./AuthContext";
 
-const ScheduleFilling = ({ onSave }) => {
+const ScheduleFilling = ({ onSave, name }) => {
     // Состояние для хранения выбранных смен
     const [selectedShifts, setSelectedShifts] = useState({
         Monday: null,
@@ -106,6 +106,7 @@ const ScheduleFilling = ({ onSave }) => {
 
     const handleSendData = () => {
         const dataToSend = {
+            name : name,
             week: formatCurrentWeek(), // Форматируем текущую неделю
             shifts: selectedShifts,    // Выбранные смены
         };

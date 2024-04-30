@@ -32,7 +32,7 @@ const ProfilePage = () => {
             {isEmploye &&
                 <div className="profile-wrapper">
                     <ProfileLeft name="Челов Чел Челиков" position="бариста" notification={notifications[0]} previousNotifications={notifications.slice(1)} />
-                    <ProfileCentral onSave={handleSaveNotification}></ProfileCentral>
+                    <ProfileCentral name="Челов Чел Челиков" onSave={handleSaveNotification}></ProfileCentral>
                 </div>
             }
         </>

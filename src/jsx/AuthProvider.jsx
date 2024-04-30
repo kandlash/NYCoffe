@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
   const [weeks, setWeeks] = useState(
     // 
     JSON.parse(localStorage.getItem("weeks")) || []
+    
   );
 
   const updateWeeks = (index, newWeek) =>{

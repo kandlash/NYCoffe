@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import moment from "moment";
 import left_arrow from "../images/left_arrow.svg";
 import right_arrow from "../images/right_arrow.svg";
+import AuthContext from "./AuthContext";
 
 const AdminSheduleFilling = ({ onSave }) => {
   // State for storing selected shifts
@@ -14,6 +15,8 @@ const AdminSheduleFilling = ({ onSave }) => {
     Saturday: [[], [], []],
     Sunday: [[], [], []],
   });
+
+  const { weeks } = useContext(AuthContext);
 
   const [backData, setBackData] = useState([]);
 
@@ -43,32 +46,44 @@ const AdminSheduleFilling = ({ onSave }) => {
   const fetchData = useCallback(() => {
     const cw = formatCurrentWeek();
     let backendData = [];
+    weeks.forEach(element => {
+      if (element.week === cw) {
+          let name = element.name;
+          let shifts = element.shifts;
+          console.log(shifts);
+          Object.entries(shifts).forEach(([day, shift]) => {
+            backendData.push({ name: name, day: day, shift: shift });
+          });
+      }
+  });
+  console.log(backendData)
+  
 
-    if (cw === "15.04.2024-21.04.2024") {
-      backendData = [
-        { employe_name: "Кириллов Кирилл Кириллович", day: "Monday", shift: 1 },
-        { employe_name: "Чурилов Чурил Чурилович", day: "Tuesday", shift: 2 },
-        { employe_name: "Кириллов Кирилл Кириллович", day: "Tuesday", shift: 3 },
-        { employe_name: "Жуков Жук Жукович", day: "Tuesday", shift: 2 },
-        { employe_name: "Петров Петр Петрович", day: "Friday", shift: 1 },
-      ];
-    } else if (cw === "08.04.2024-14.04.2024") {
-      backendData = [
-        { employe_name: "Кириллов Кирилл Кириллович", day: "Monday", shift: 3 },
-        { employe_name: "Чурилов Чурил Чурилович", day: "Tuesday", shift: 3 },
-        { employe_name: "Кириллов Кирилл Кириллович", day: "Tuesday", shift: 3 },
-        { employe_name: "Жуков Жук Жукович", day: "Tuesday", shift: 1 },
-        { employe_name: "Петров Петр Петрович", day: "Friday", shift: 1 },
-      ];
-    } else if (cw === "22.04.2024-28.04.2024") {
-      backendData = [
-        { employe_name: "Кириллов Кирилл Кириллович", day: "Friday", shift: 2 },
-        { employe_name: "Чурилов Чурил Чурилович", day: "Monday", shift: 1 },
-        { employe_name: "Кириллов Кирилл Кириллович", day: "Tuesday", shift: 3 },
-        { employe_name: "Жуков Жук Жукович", day: "Tuesday", shift: 2 },
-        { employe_name: "Петров Петр Петрович", day: "Friday", shift: 1 },
-      ];
-    }
+    // if (cw === "15.04.2024-21.04.2024") {
+    //   backendData = [
+    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Monday", shift: 1 },
+    //     { employe_name: "Чурилов Чурил Чурилович", day: "Tuesday", shift: 2 },
+    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Tuesday", shift: 3 },
+    //     { employe_name: "Жуков Жук Жукович", day: "Tuesday", shift: 2 },
+    //     { employe_name: "Петров Петр Петрович", day: "Friday", shift: 1 },
+    //   ];
+    // } else if (cw === "08.04.2024-14.04.2024") {
+    //   backendData = [
+    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Monday", shift: 3 },
+    //     { employe_name: "Чурилов Чурил Чурилович", day: "Tuesday", shift: 3 },
+    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Tuesday", shift: 3 },
+    //     { employe_name: "Жуков Жук Жукович", day: "Tuesday", shift: 1 },
+    //     { employe_name: "Петров Петр Петрович", day: "Friday", shift: 1 },
+    //   ];
+    // } else if (cw === "22.04.2024-28.04.2024") {
+    //   backendData = [
+    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Friday", shift: 2 },
+    //     { employe_name: "Чурилов Чурил Чурилович", day: "Monday", shift: 1 },
+    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Tuesday", shift: 3 },
+    //     { employe_name: "Жуков Жук Жукович", day: "Tuesday", shift: 2 },
+    //     { employe_name: "Петров Петр Петрович", day: "Friday", shift: 1 },
+    //   ];
+    // }
     console.log("fetched data: " + backendData);
     // Update the state with fetched data
     setSelectedShifts(initializeSelectedShifts(backendData));
@@ -157,7 +172,7 @@ const AdminSheduleFilling = ({ onSave }) => {
                       <select onChange={(event) => handleSelectChange(event, day, shift)}>
                         {backData && backData.map((employee, index) => {
                           if (employee.day === day && employee.shift === shift) {
-                            return <option key={`${employee.id}-${day}-${shift}-${index}`}>{employee.employe_name}</option>;
+                            return <option key={`${employee.id}-${day}-${shift}-${index}`}>{employee.name}</option>;
                           }
                           return null;
                         })}
