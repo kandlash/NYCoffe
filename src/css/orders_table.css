@@ -35,6 +35,10 @@
     font-size: 1.12rem;
 }
 
+.orders-table td{
+    padding: 10px 0px;
+}
+
 /* Style the scrollbar */
 .orders-table-container::-webkit-scrollbar {
     width: 8px;

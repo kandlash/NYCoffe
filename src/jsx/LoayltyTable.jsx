@@ -33,11 +33,11 @@ function generateVisits(count) {
 // Компонент таблицы
 const LoayltyTable = () => {
     // Генерация данных для каждого человека
+    // const storedCards = JSON.parse(localStorage.getItem("cards")) || [];
     const [people, setPeople] = useState([
         { name: "Иванов Иван Иванович", phone: "+1234567890", card: generateCardNumber(), coupon: "-", visits: generateVisits(5) },
         { name: "Петров Петр Петрович", phone: "+9876543210", card: generateCardNumber(), coupon: "-", visits: generateVisits(3) },
         { name: "Сидоров Сидор Сидорович", phone: "+5556667777", card: generateCardNumber(), coupon: "-", visits: generateVisits(2) },
-        { name: "Петров Петр Петрович", phone: "+9876543210", card: generateCardNumber(), coupon: "-", visits: generateVisits(3) },
         { name: "Петров Петр Петрович", phone: "+9876543210", card: generateCardNumber(), coupon: "-", visits: generateVisits(3) }
     ]);
 

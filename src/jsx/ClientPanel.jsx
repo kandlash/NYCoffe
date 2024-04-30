@@ -9,17 +9,16 @@ const ClientPanel = (props) => {
   const [employeeCheckbox, setEmployeeCheckbox] = useState(props.employeeCheckbox);
   const [birthdayCheckbox, setBirthdayCheckbox] = useState(props.birthdayCheckbox);
   const [comment, setComment] = useState(props.comment || "");
-  const [cards, setCards] = useState([]); // Добавляем состояние для хранения списка карт
-  const [showCards, setShowCards] = useState(false); // Добавляем состояние для отслеживания видимости окна с картами
+  const [cards, setCards] = useState([]);
+  const [showCards, setShowCards] = useState(false);
+  const [filteredCards, setFilteredCards] = useState([]);
 
   useEffect(() => {
-    // Загружаем карты из локального хранилища при монтировании компонента
-    // const storedCards = JSON.parse(localStorage.getItem("cards")) || [];
     const storedCards = [
       {card: "0001", name: "Горилов Горилла Гориллович"},
       {card: "0003", name: "Макаков Макак Макакивич"},
       {card: "0002", name: "Пармезанов Пармезан Пармезанович"},
-    ]
+    ];
     setCards(storedCards);
   }, []);
 
@@ -71,8 +70,11 @@ const ClientPanel = (props) => {
 
   const handleCardNumberChange = (e) => {
     setCardNumber(e.target.value);
-    setShowCards(!!e.target.value); // Отображаем окно с картами только если input не пустой
+    setShowCards(!!e.target.value);
     props.onUpdate({ cardNumber: e.target.value });
+    const regex = new RegExp(`^${e.target.value}`, 'i');
+    const filtered = cards.filter(card => regex.test(card.card) || regex.test(card.name.split(' ')[0]));
+    setFilteredCards(filtered);
   };
 
   const handleCouponChange = (e) => {
@@ -92,9 +94,14 @@ const ClientPanel = (props) => {
 
   const handleCardSelect = (card) => {
     setCardNumber(card.card);
-    setShowCards(false); // Скрываем окно с картами при выборе карты
+    setShowCards(false);
     props.onUpdate({ cardNumber: card.card });
   };
+
+  const filterCards = (cards, search) => {
+    const regex = new RegExp(`^${search}`, 'i');
+    return cards.filter(card => regex.test(card.card) || regex.test(card.name.split(' ')[0]));
+  }
 
   return (
     <div className="client-container" style={props.style}>
@@ -113,13 +120,11 @@ const ClientPanel = (props) => {
         <input type="text" value={cardNumber} onChange={handleCardNumberChange}></input>
         {showCards && (
           <div className="card-list">
-            {cards
-              .filter((card) => card.card.startsWith(cardNumber)) // Фильтруем карты по номеру
-              .map((card) => (
-                <div className="card-item" key={card.card} onClick={() => handleCardSelect(card)}>
-                  {card.card} <br></br>{card.name}
-                </div>
-              ))}
+            {filteredCards.map((card) => (
+              <div className="card-item" key={card.card} onClick={() => handleCardSelect(card)}>
+                {card.card} <br></br>{card.name}
+              </div>
+            ))}
           </div>
         )}
       </div>
