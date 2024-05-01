@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const ProfilePage = () => {
     const [notifications, setNotifications] = useState([]);
     const { isAdmin, isEmploye, isWorker } = useContext(AuthContext);
+    // const [name, setName] = useState("Челов Чел Челиков");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,20 +20,26 @@ const ProfilePage = () => {
         } else if (isAdmin) {
             navigate("/admin");
         }
+        
     }, [isAdmin, isWorker, isEmploye, navigate]);
 
     const handleSaveNotification = (data) => {
         // Добавляем новое уведомление в начало списка
         setNotifications([data, ...notifications]);
         console.log("set notification " + data.text)
+        
     };
+
+
+    //  const name = "Жуков Жук Жукович";
+    const name = "Челов Чел Челиков";
 
     return (
         <>
             {isEmploye &&
                 <div className="profile-wrapper">
-                    <ProfileLeft name="Челов Чел Челиков" position="бариста" notification={notifications[0]} previousNotifications={notifications.slice(1)} />
-                    <ProfileCentral name="Челов Чел Челиков" onSave={handleSaveNotification}></ProfileCentral>
+                    <ProfileLeft name={name} position="бариста" notification={notifications[0]} previousNotifications={notifications.slice(1)} />
+                    <ProfileCentral name={name} onSave={handleSaveNotification}></ProfileCentral>
                 </div>
             }
         </>

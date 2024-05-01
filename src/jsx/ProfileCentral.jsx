@@ -26,7 +26,7 @@ const ProfileCentral = ({ onSave, name }) => {
             </div>
             <div className="profile-central-main-container">
                 {isShedule && <ScheduleFilling name={name} onSave={onSave} />}
-                {!isShedule && <SheduleWatch />}
+                {!isShedule && <SheduleWatch name={name} />}
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import moment from "moment";
 import left_arrow from "../images/left_arrow.svg";
 import right_arrow from "../images/right_arrow.svg";
@@ -51,58 +51,30 @@ const ScheduleFilling = ({ onSave, name }) => {
     };
 
     // Функция для форматирования текущей недели
-    const formatCurrentWeek = () => {
+    const formatCurrentWeek = useCallback(() => {
         const startOfWeek = currentWeek.startOf('isoWeek').format('DD.MM.YYYY');
         const endOfWeek = currentWeek.endOf('isoWeek').format('DD.MM.YYYY');
         return `${startOfWeek}-${endOfWeek}`;
-    };
+    }, [currentWeek]);
 
-    const sendDataToBackend = (data) => {
-        // Здесь вы можете использовать библиотеку для отправки HTTP запросов, например, fetch или axios
-        // Пример с использованием fetch:
-        fetch('http://example.com/api/data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Data sent successfully:', data);
-            // Здесь можно добавить дополнительную логику в случае успешной отправки данных
-        })
-        .catch(error => {
-            console.error('Error sending data:', error);
-            // Здесь можно добавить обработку ошибок при отправке данных
-        });
-    };
 
     const { addWeeks, weeks, updateWeeks } = useContext(AuthContext);
 
-    useEffect(()=>{
-        getWeek();
-    }, [])
+    const getWeek = useCallback(() => {
+        const cw = formatCurrentWeek();
+        weeks.forEach((week) =>{
+            if(week.week === cw && week.name === name){
+                setIsWeekExists(true);
+            }
+            else{
+                setIsWeekExists(false);
+            }
+        })
+    }, [weeks, formatCurrentWeek, name]);
 
     useEffect(()=>{
         getWeek();
-    }, [currentWeek])
-
-    const getWeek = () => {
-        const weekNumber = formatCurrentWeek();
-        const weekData = weeks.find(week => week.week === weekNumber);
-        if(weekData){
-            setIsWeekExists(true);
-        }
-        else{
-            setIsWeekExists(false);
-        }
-    }
+    }, [getWeek, currentWeek]) // Include getWeek in the dependency array
 
     const handleSendData = () => {
         const dataToSend = {

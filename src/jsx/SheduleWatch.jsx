@@ -1,31 +1,41 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import moment from "moment";
 import left_arrow from "../images/left_arrow.svg";
 import right_arrow from "../images/right_arrow.svg";
 import AuthContext from "./AuthContext";
 
-const ScheduleWatch = () => {
+const ScheduleWatch = (props) => {
     const [scheduleData, setScheduleData] = useState(null); // Состояние для хранения данных с бэкенда
     const { weeks } = useContext(AuthContext);
     const [currentWeek, setCurrentWeek] = useState(moment().startOf('isoWeek'));
     
+    const formatCurrentWeek = useCallback(() => {
+        const startOfWeek = currentWeek.startOf('isoWeek').format('DD.MM.YYYY');
+        const endOfWeek = currentWeek.endOf('isoWeek').format('DD.MM.YYYY');
+        return `${startOfWeek}-${endOfWeek}`;
+    }, [currentWeek]);
 
-    const getWeek = () => {
-        const weekNumber = formatCurrentWeek();
-        const weekData = weeks.find(week => week.week === weekNumber);
-        console.log(weekData);
-        setScheduleData(weekData);
-    }
+    const getWeek = useCallback(() => {
+        const cw = formatCurrentWeek();
+        let flag = false;
+        weeks.forEach((week) =>{
+            console.log("week " + week.week + ", name: " + props.name)
+            if(week.week === cw && week.name === props.name){
+                setScheduleData(week)
+                flag = true;
+                console.log(" NASHEL !week " + week.week + ", name: " + props.name)
+            }
+        })
+        if(!flag) setScheduleData(null);
+    }, [weeks, formatCurrentWeek, props.name]);
 
     useEffect(() => {
         getWeek();
-    }, []); // Пустой массив зависимостей означает, что эффект выполняется только один раз при монтировании компонента
-    // Состояние для хранения текущей отображаемой недели
+    }, [getWeek]); // Include getWeek in the dependency array
 
     useEffect(()=> {
         getWeek();
-    }, [currentWeek]);
-    
+    }, [currentWeek, getWeek]); // Include getWeek in the dependency array
 
     // Функция для переключения на предыдущую неделю
     const goToPreviousWeek = () => {
@@ -40,12 +50,6 @@ const ScheduleWatch = () => {
         setCurrentWeek(prevWeek => prevWeek.clone().add(1, 'week'));
     };
 
-    // Функция для форматирования текущей недели
-    const formatCurrentWeek = () => {
-        const startOfWeek = currentWeek.startOf('isoWeek').format('DD.MM.YYYY');
-        const endOfWeek = currentWeek.endOf('isoWeek').format('DD.MM.YYYY');
-        return `${startOfWeek}-${endOfWeek}`;
-    };
     
     return (
         <div className="schedule-watch-container">
