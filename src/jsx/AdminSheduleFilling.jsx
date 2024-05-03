@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useState, useEffect, useCallback, useContext, useMemo } from "react";
 import moment from "moment";
 import left_arrow from "../images/left_arrow.svg";
 import right_arrow from "../images/right_arrow.svg";
@@ -110,15 +110,19 @@ const AdminSheduleFilling = ({ onSave }) => {
     return selectedShifts;
   };
 
-  // Function to handle select change
+
   const handleSelectChange = (event, day, shift) => {
-    const { value } = event.target;
+    const selectedOption = event.target.options[event.target.selectedIndex];
+    const employeeName = selectedOption ? selectedOption.text : '';
+    console.log(employeeName);
+  
     setSelectedShifts((prevSelectedShifts) => {
       const newSelectedShifts = { ...prevSelectedShifts };
-      newSelectedShifts[day][shift - 1] = value ? [value] : [];
+      newSelectedShifts[day][shift - 1] = employeeName ? [employeeName] : [];
       return newSelectedShifts;
     });
   };
+  
 
   // Function to send data to the backend
   const handleSendData = () => {
@@ -146,6 +150,32 @@ const AdminSheduleFilling = ({ onSave }) => {
     fetchData();
   }, [currentWeek, fetchData]);
 
+  const calculateNormShifts = useCallback(() => {
+    const normShifts = {
+      Monday: [0, 0, 0],
+      Tuesday: [0, 0, 0],
+      Wednesday: [0, 0, 0],
+      Thursday: [0, 0, 0],
+      Friday: [0, 0, 0],
+      Saturday: [0, 0, 0],
+      Sunday: [0, 0, 0],
+    };
+
+    backData.forEach((employee) => {
+      const dayIndex = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].indexOf(employee.day);
+      const shiftIndex = employee.shift - 1;
+
+      if (dayIndex !== -1 && shiftIndex !== -1) {
+        normShifts[["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][dayIndex]][shiftIndex]++;
+      }
+    });
+
+    return normShifts;
+  }, [backData]);
+
+  // Calculate normShifts when backData changes
+  const normShifts = useMemo(() => calculateNormShifts(), [backData, calculateNormShifts]);
+
   return (
     <div className="admin-shifts-wrapper">
       <div className="schedule-filling-container">
@@ -163,25 +193,26 @@ const AdminSheduleFilling = ({ onSave }) => {
                 <th>Вс</th>
               </tr>
           </thead>
-            <tbody>
-              {[1, 2, 3].map((shift) => (
-                <tr key={shift}>
-                  <td>{shift} смена</td>
-                  {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
-                    <td key={`${day}-${shift}`}>
-                      <select onChange={(event) => handleSelectChange(event, day, shift)}>
-                        {backData && backData.map((employee, index) => {
-                          if (employee.day === day && employee.shift === shift) {
-                            return <option key={`${employee.id}-${day}-${shift}-${index}`}>{employee.name}</option>;
-                          }
-                          return null;
-                        })}
-                      </select>
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
+          <tbody>
+        {[1, 2, 3].map((shift) => (
+          <tr key={shift}>
+            <td>{shift} смена</td>
+            {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
+              <td key={`${day}-${shift}`}>
+                <select onChange={(event) => handleSelectChange(event, day, shift)}>
+                  <option>{normShifts[day][shift - 1]}</option>
+                  {backData.map((employee, index) => {
+                    if (employee.day === day && employee.shift === shift) {
+                      return <option key={`${employee.id}-${day}-${shift}-${index}`}>{employee.name}</option>;
+                    }
+                    return null;
+                  })}
+                </select>
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
           </table>
         </div>
         <div className="shedule-filling-week-swap">
