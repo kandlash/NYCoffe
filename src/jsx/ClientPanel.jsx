@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import '../css/client.css'
 import trash_icon from "../images/trash_icon.svg";
+import AuthContext from "./AuthContext";
 
 const ClientPanel = (props) => {
   const [price, setPrice] = useState(0);
@@ -12,13 +13,11 @@ const ClientPanel = (props) => {
   const [cards, setCards] = useState([]);
   const [showCards, setShowCards] = useState(false);
   const [filteredCards, setFilteredCards] = useState([]);
+  const { clients } = useContext(AuthContext);
 
   useEffect(() => {
-    const storedCards = [
-      {card: "0001", name: "Горилов Горилла Гориллович"},
-      {card: "0003", name: "Макаков Макак Макакивич"},
-      {card: "0002", name: "Пармезанов Пармезан Пармезанович"},
-    ];
+    const storedCards = clients
+    console.log(storedCards)
     setCards(storedCards);
   }, []);
 
@@ -75,7 +74,9 @@ const ClientPanel = (props) => {
     const regex = new RegExp(`^${e.target.value}`, 'i');
     const filtered = cards.filter(card => regex.test(card.card) || regex.test(card.name.split(' ')[0]));
     setFilteredCards(filtered);
+    console.log(filtered);
   };
+  
 
   const handleCouponChange = (e) => {
     setCoupon(e.target.value);

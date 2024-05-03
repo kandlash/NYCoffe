@@ -14,14 +14,22 @@ const AuthProvider = ({ children }) => {
   const [isActivated, setIsActivated] = useState(
     localStorage.getItem("isActivated") === "true");
 
+    const [clients, setClients] = useState(
+      JSON.parse(localStorage.getItem("clientss")) || []
+    );
+    
+    const saveClients = (newClients) => {
+      setClients(newClients);
+      localStorage.setItem("clientss", JSON.stringify(newClients));
+    };
+
   const [weeks, setWeeks] = useState(
     // 
     JSON.parse(localStorage.getItem("weeks")) || []
-    
-  );
-   localStorage.removeItem("weeks");
 
-  const updateWeeks = (index, newWeek) =>{
+  );
+
+  const updateWeeks = (index, newWeek) => {
     const updatedWeeks = [...weeks];
     updatedWeeks[index] = newWeek;
     setWeeks(updatedWeeks);
@@ -33,7 +41,7 @@ const AuthProvider = ({ children }) => {
     setWeeks(updatedWeeks);
     localStorage.setItem("weeks", JSON.stringify(updatedWeeks));
   }
-  
+
 
 
   const login = () => {
@@ -85,7 +93,9 @@ const AuthProvider = ({ children }) => {
       isEmploye, loginAsEmp, logoutAsEmp,
       isWorker, loginAsWorker, logoutAsWorker,
       isActivated, activate, deActivate,
-      weeks, addWeeks, updateWeeks
+      weeks, addWeeks, updateWeeks,
+      clients,
+      saveClients,
     }}>
       {children}
     </AuthContext.Provider>
