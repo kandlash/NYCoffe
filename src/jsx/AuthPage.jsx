@@ -15,7 +15,7 @@ const AuthPage = ({ onButtonClick }) => {
     const { login, loginAsEmp } = useContext(AuthContext);
     const [isCorrect, setIsCorrect] = useState(true);
 
-    const { isAdmin, isEmploye, isWorker } = useContext(AuthContext);
+    const { isAdmin, isEmploye, isWorker, employees } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -31,19 +31,24 @@ const AuthPage = ({ onButtonClick }) => {
 
 
     const handleClick = () => {
-        if (isEmploye2) {
-            loginAsEmp();
-            setIsCorrect(true);
-        } else if (isAdmin2) {
-            login();
-            setIsCorrect(true);
+        const employee = employees.find(
+          (employee) => employee.email === email && employee.password === password
+        );
+      
+        if (employee) {
+          localStorage.setItem("employeeName", `${employee.lastName} ${employee.firstName} ${employee.middleName}`);
+          loginAsEmp();
+          setIsCorrect(true);
+        } else if (email === "admin" && password === "admin") {
+          login();
+          setIsCorrect(true);
+        } else {
+          console.log("not correct!");
+          setIsCorrect(false);
         }
-        else{
-            console.log('not correct!');
-            setIsCorrect(false);
-        }
-
-    }
+      }
+      
+      
 
     const handleEmailChange = (e) => {
         setIsCorrect(true);

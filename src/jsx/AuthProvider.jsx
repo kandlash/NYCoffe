@@ -86,6 +86,16 @@ const AuthProvider = ({ children }) => {
     setIsActivated(false);
   }
 
+  const [employees, setEmployees] = useState(
+    JSON.parse(localStorage.getItem("employees")) || []
+  );
+  
+  const saveEmployees = (newEmployees) => {
+    setEmployees(newEmployees);
+    localStorage.setItem("employees", JSON.stringify(newEmployees));
+  };
+  
+
 
   return (
     <AuthContext.Provider value={{
@@ -96,6 +106,8 @@ const AuthProvider = ({ children }) => {
       weeks, addWeeks, updateWeeks,
       clients,
       saveClients,
+      employees,
+      saveEmployees,
     }}>
       {children}
     </AuthContext.Provider>

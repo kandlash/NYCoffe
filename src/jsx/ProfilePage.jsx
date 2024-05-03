@@ -32,7 +32,8 @@ const ProfilePage = () => {
 
 
     //  const name = "Жуков Жук Жукович";
-    const name = "Челов Чел Челиков";
+    const [name, setName] = useState(localStorage.getItem("employeeName") || "Челов Чел Челиков");
+
 
     return (
         <>

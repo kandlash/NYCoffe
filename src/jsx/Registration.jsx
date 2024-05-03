@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import '../css/authpanel.css'
 import { toast } from 'react-toastify';
+import AuthContext from "./AuthContext";
 
 const Registration = () => {
   const [lastName, setLastName] = useState("");
@@ -11,6 +12,7 @@ const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const {employees, saveEmployees} = useContext(AuthContext);
 
   const handleInputChange = () => {
     if (lastName && firstName && middleName && phone && email && password) {
@@ -21,16 +23,29 @@ const Registration = () => {
   };
 
   const addEmploye = () =>{
-    toast.success(`Добавлен сотрудник`, {
-        position: "bottom-right",
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+    const newEmployee = {
+      lastName,
+      firstName,
+      middleName,
+      phone,
+      email,
+      password
+    };
+  
+    const updatedEmployees = [...employees, newEmployee];
+    saveEmployees(updatedEmployees);
+  
+    toast.success(`Добавлен сотрудник ${lastName} ${firstName} ${middleName}`, {
+      position: "bottom-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
     });
   }
+  
 
   return (
     <div className="RegPanelWrapper">
