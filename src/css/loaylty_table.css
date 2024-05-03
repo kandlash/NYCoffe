@@ -67,6 +67,8 @@
 }
 
 .delete-person-button{
+    color: white;
+    font-size: 1.2rem;
     width: 25px;
     height: 25px;
     background-color: transparent;
@@ -74,9 +76,12 @@
     transition: all 0.15s;
 }
 
+.delete-person-button:disabled{
+    opacity: 0.5;
+}
+
 .delete-person-button:hover{
     cursor: pointer;
-    transform: scale(1.05);
 }
 
 .trash-icon-img{

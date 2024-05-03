@@ -39,7 +39,7 @@ const LoayltyTable = () => {
             <table className='loyalty-table'>
                 <thead>
                     <tr>
-                        <th style={{ width: "311px" }}>ФИО</th>
+                        <th style={{ width: "500px" }}>ФИО</th>
                         <th style={{ width: "355px" }}>Номер телефона</th>
                         <th>Номер карты</th>
                         <th>Купон</th>
