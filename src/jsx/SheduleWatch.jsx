@@ -6,8 +6,9 @@ import AuthContext from "./AuthContext";
 
 const ScheduleWatch = (props) => {
     const [scheduleData, setScheduleData] = useState(null); // Состояние для хранения данных с бэкенда
-    const { weeks } = useContext(AuthContext);
+    const { weeks, adminWeeks } = useContext(AuthContext);
     const [currentWeek, setCurrentWeek] = useState(moment().startOf('isoWeek'));
+    const [currentAdminWeek, setCurrentAdminWeek]  = useState();
     
     const formatCurrentWeek = useCallback(() => {
         const startOfWeek = currentWeek.startOf('isoWeek').format('DD.MM.YYYY');
@@ -19,14 +20,16 @@ const ScheduleWatch = (props) => {
         const cw = formatCurrentWeek();
         let flag = false;
         weeks.forEach((week) =>{
-            console.log("week " + week.week + ", name: " + props.name)
             if(week.week === cw && week.name === props.name){
                 setScheduleData(week)
                 flag = true;
-                console.log(" NASHEL !week " + week.week + ", name: " + props.name)
             }
         })
         if(!flag) setScheduleData(null);
+        const admWk = adminWeeks.find((week) => week.week === formatCurrentWeek() && week.name === props.name);
+        console.log(admWk);
+        console.log(adminWeeks);
+         setCurrentAdminWeek(admWk);
     }, [weeks, formatCurrentWeek, props.name]);
 
     useEffect(() => {
@@ -36,6 +39,10 @@ const ScheduleWatch = (props) => {
     useEffect(()=> {
         getWeek();
     }, [currentWeek, getWeek]); // Include getWeek in the dependency array
+
+    useEffect(()=>{
+        setCurrentAdminWeek(adminWeeks.find((week) => week.week === formatCurrentWeek()));
+    }, [formatCurrentWeek, adminWeeks])
 
     // Функция для переключения на предыдущую неделю
     const goToPreviousWeek = () => {
@@ -73,7 +80,7 @@ const ScheduleWatch = (props) => {
                                 <td>{shift} смена</td>
                                 {Object.keys(scheduleData.shifts).map(day => (
                                     <td className="tds" key={day}>
-                                        <div className={`shedule-watch-table-content ${scheduleData.shifts[day] === shift ? 's' : ''}`}>
+                                        <div className={`shedule-watch-table-content  ${scheduleData.shifts[day] === shift ? 's' : ''}  ${currentAdminWeek.shifts[day] === shift && currentAdminWeek.shifts[day][shift - 1].includes(props.name) ? 'sa' : ''}`}>
                                         </div>
                                     </td>
                                 ))}

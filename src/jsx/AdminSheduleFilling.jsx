@@ -16,7 +16,7 @@ const AdminSheduleFilling = ({ onSave }) => {
     Sunday: [[], [], []],
   });
 
-  const { weeks } = useContext(AuthContext);
+  const { weeks, adminWeeks, changeAdminWeek, addAdminWeek } = useContext(AuthContext);
 
   const [backData, setBackData] = useState([]);
 
@@ -56,36 +56,6 @@ const AdminSheduleFilling = ({ onSave }) => {
           });
       }
   });
-  console.log(backendData)
-  
-
-    // if (cw === "15.04.2024-21.04.2024") {
-    //   backendData = [
-    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Monday", shift: 1 },
-    //     { employe_name: "Чурилов Чурил Чурилович", day: "Tuesday", shift: 2 },
-    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Tuesday", shift: 3 },
-    //     { employe_name: "Жуков Жук Жукович", day: "Tuesday", shift: 2 },
-    //     { employe_name: "Петров Петр Петрович", day: "Friday", shift: 1 },
-    //   ];
-    // } else if (cw === "08.04.2024-14.04.2024") {
-    //   backendData = [
-    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Monday", shift: 3 },
-    //     { employe_name: "Чурилов Чурил Чурилович", day: "Tuesday", shift: 3 },
-    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Tuesday", shift: 3 },
-    //     { employe_name: "Жуков Жук Жукович", day: "Tuesday", shift: 1 },
-    //     { employe_name: "Петров Петр Петрович", day: "Friday", shift: 1 },
-    //   ];
-    // } else if (cw === "22.04.2024-28.04.2024") {
-    //   backendData = [
-    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Friday", shift: 2 },
-    //     { employe_name: "Чурилов Чурил Чурилович", day: "Monday", shift: 1 },
-    //     { employe_name: "Кириллов Кирилл Кириллович", day: "Tuesday", shift: 3 },
-    //     { employe_name: "Жуков Жук Жукович", day: "Tuesday", shift: 2 },
-    //     { employe_name: "Петров Петр Петрович", day: "Friday", shift: 1 },
-    //   ];
-    // }
-    console.log("fetched data: " + backendData);
-    // Update the state with fetched data
     setSelectedShifts(initializeSelectedShifts(backendData));
     setBackData(backendData);
   }, [formatCurrentWeek]);
@@ -131,6 +101,21 @@ const AdminSheduleFilling = ({ onSave }) => {
       shifts: selectedShifts, // Selected shifts
     };
     console.log("Saved data:", dataToSend);
+    const cw = formatCurrentWeek();
+    let flag;
+    const index_ = adminWeeks.findIndex((week) => week.week === cw);
+    if (index_ !== -1) {
+      flag = true;
+    }
+    
+    if(flag){
+      changeAdminWeek(index_, dataToSend);
+    }
+    else{
+      addAdminWeek(dataToSend);
+    }
+
+
     const data = {
       text: "Заполнен график на неделю: ",
       date: formatCurrentWeek(),

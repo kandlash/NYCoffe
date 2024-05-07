@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+    import React, { useState, useContext, useEffect } from "react";
 import "../css/drink_to_cheque.css";
 import cofeimg from '../images/cofe-image.png';
 import arrow from '../images/arrow_back_FILL0_wght400_GRAD0_opsz24.svg'
@@ -27,9 +27,6 @@ const DrinkToCheque = (props) => {
 
     const updateAdditionsPrice = (syrup, extras) =>{
         const additionPriceConst = 2;
-        console.log("Updating additionsPrice");
-        console.log("---- syrop: " + syrup);
-        console.log("---- extras: " + extras);
         setAdditionsPrice(additionPriceConst * (syrup + extras));
     }
 
@@ -73,7 +70,6 @@ const DrinkToCheque = (props) => {
 
     const handleCreateClick = () => {
         const totalPriceWithAdditions = totalPrice + additionsPrice;
-        console.log("Итоговая цена:", totalPriceWithAdditions);
     
         // Вызов toast-уведомления
   // Вызов toast-уведомления с кастомным компонентом

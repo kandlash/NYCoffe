@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../css/add_cl_l.css"
 
 const AddClientForm = ({ addClient }) => {
   const [name, setName] = useState('');
@@ -14,18 +15,20 @@ const AddClientForm = ({ addClient }) => {
   return (
     <form onSubmit={handleSubmit} style={formStyle}>
       <input
+      className='cl-inp-fl'
         type="text"
         placeholder="ФИО"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        style={inputStyle}
+        
       />
       <input
+      className='cl-inp-fl'
         type="text"
         placeholder="Номер телефона"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
-        style={inputStyle}
+       
       />
       <button type="submit" style={buttonStyle}>Добавить клиента</button>
     </form>
@@ -46,6 +49,8 @@ const inputStyle = {
   borderRadius: '5px',
   fontSize: '16px',
   width: '300px',
+  color : 'black',
+  backgroundColor : 'white',
 };
 
 const buttonStyle = {
