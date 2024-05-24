@@ -80,7 +80,7 @@ const ScheduleWatch = (props) => {
                                 <td>{shift} смена</td>
                                 {Object.keys(scheduleData.shifts).map(day => (
                                     <td className="tds" key={day}>
-                                        <div className={`shedule-watch-table-content  ${scheduleData.shifts[day] === shift ? 's' : ''}  ${currentAdminWeek.shifts[day] === shift && currentAdminWeek.shifts[day][shift - 1].includes(props.name) ? 'sa' : ''}`}>
+                                        <div className={`shedule-watch-table-content  ${scheduleData.shifts[day] === shift ? 's' : ''} `}>
                                         </div>
                                     </td>
                                 ))}

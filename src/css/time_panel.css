@@ -16,7 +16,7 @@
 }
 
 .nav-elements-wrapper{
-    width: 250px;
+    width: 300px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,7 +38,7 @@
 
 .nav-elements-wrapper .panel-name{
     font-size: 1.6rem;
-    width: 150px;
+    width: 200px;
 }
 
 .time-panel-labels {

@@ -35,7 +35,7 @@ const ActivationPage = ({ onButtonClick }) => {
     }
 
     const handlePasswordChange = (e) => {
-        if (e.target.value === "testcode") {
+        if (e.target.value === "test1234") {
             setIsCorrect(true);
             setIsCorrectCode(true);
         }

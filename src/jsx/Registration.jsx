@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import '../css/authpanel.css'
 import { toast } from 'react-toastify';
 import AuthContext from "./AuthContext";
+import icon_man from "../images/icon_man.svg"
+import email_icon from "../images/email_icon.svg"
+import password_icon from "../images/password_icon.svg"
 
 const Registration = () => {
   const [lastName, setLastName] = useState("");
@@ -57,6 +60,7 @@ const Registration = () => {
         </div>
         <div className="reg-wrapper">
           <div className="reg-input">
+            <img className="icon_reg" src={icon_man} alt="man"></img>
             <input onChange={(e) => {setLastName(e.target.value); handleInputChange();}} type="text" placeholder="Фамилия" />
           </div>
           <div className="reg-input">
@@ -69,9 +73,11 @@ const Registration = () => {
             <input onChange={(e) => {setPhone(e.target.value); handleInputChange();}} type="phone" placeholder="Номер телефона" />
           </div>
           <div className="reg-input">
+            <img className="icon_reg" src={email_icon} alt="email_icon"></img>
             <input onChange={(e) => {setEmail(e.target.value); handleInputChange();}} type="text" placeholder="Email-адрес" />
           </div>
           <div className="reg-input">
+          <img className="icon_reg" src={password_icon} alt="password_icon"></img>
             <input onChange={(e) => {setPassword(e.target.value); handleInputChange();}} type="password" placeholder="Пароль" />
           </div>
           <div className="auth-button admin">
